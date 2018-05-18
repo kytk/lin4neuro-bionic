@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Install AFNI-2
+Name[ja]=AFNIのインストール-2
+Exec=sh -c "~/git/lin4neuro-bionic/installer-scripts/afni_installer_bionic_2.sh"
+Icon=afni
+#Categories=Neuroimaging;
+StartupNotify=true
+Terminal=true
+
