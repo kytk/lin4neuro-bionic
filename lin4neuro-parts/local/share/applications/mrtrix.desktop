@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+GenericName=MRI Tractography View
+Name=MRview
+Exec=mrview
+Type=Application
+Terminal=false
+Categories=Neuroimaging;
+Icon=mrtrix.png
+NoDisplay=true
+
