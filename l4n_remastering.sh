@@ -1,6 +1,6 @@
 #!/bin/bash
-#Remastering with Remastersys for Lin4Neuro 16.04
-#31-Mar-2018 K. Nemoto
+#Remastering with Remastersys for Lin4Neuro 18.04
+#09-Sep-2018 K. Nemoto
 
 #Execute as a normal user!
 
@@ -69,9 +69,9 @@ fi
 sudo apt-get -y install ubiquity-frontend-gtk
 
 #remove 40cdrom from ubiquity
-if [ -e /usr/lib/ubiquity/apt-setup/generators/40cdrom ]; then
-	sudo rm /usr/lib/ubiquity/apt-setup/generators/40cdrom
-fi
+#if [ -e /usr/lib/ubiquity/apt-setup/generators/40cdrom ]; then
+#	sudo rm /usr/lib/ubiquity/apt-setup/generators/40cdrom
+#fi
 
 #modify ubiquity.desktop
 sudo sed -i 's/Exec=sh/Exec=sudo sh/' /usr/share/applications/ubiquity.desktop
