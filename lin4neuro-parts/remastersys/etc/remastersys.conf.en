@@ -15,11 +15,11 @@ LIVEUSER="custom"
 Date=`date '+%Y%m%d'`
 
 # Here you can change the name of the livecd/dvd label
-LIVECDLABEL="L4N-16.04-x64-en-$Date"
+LIVECDLABEL="L4N-18.04-x64-en-$Date"
 
 
 # Here you can change the name of the ISO file that is created
-CUSTOMISO="l4n-16.04-x64-en-$Date.iso"
+CUSTOMISO="l4n-18.04-x64-en-$Date.iso"
 
 
 # Here you can change the mksquashfs options
