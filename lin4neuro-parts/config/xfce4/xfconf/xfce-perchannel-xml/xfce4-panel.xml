@@ -17,7 +17,8 @@
         <value type="int" value="15"/>
         <value type="int" value="4"/>
         <value type="int" value="5"/>
-        <value type="int" value="7"/>
+        <value type="int" value="8"/>
+        <value type="int" value="9"/>
       </property>
     </property>
   </property>
@@ -47,10 +48,13 @@
         <value type="string" value="15224024172.desktop"/>
       </property>
     </property>
-    <property name="plugin-7" type="string" value="indicator">
-      <property name="known-indicators" type="array">
-        <value type="string" value="libapplication.so"/>
+    <property name="plugin-8" type="string" value="systray">
+      <property name="names-visible" type="array">
+        <value type="string" value="network"/>
       </property>
+    </property>
+    <property name="plugin-9" type="string" value="pulseaudio">
+      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
     </property>
   </property>
   <property name="plugin-6" type="string" value="systray">
