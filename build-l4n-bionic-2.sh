@@ -57,19 +57,15 @@ echo "Install MRI convert"
 sudo apt-get install -y mriconvert
 
 #VirtualMRI
-#echo "Install Virtual MRI"
-#sudo apt-get install -y virtual-mri-nonfree
 echo "Install Virtual MRI"
 cd $HOME/Downloads
 
 if [ ! -e 'vmri_3.2.14_bin.zip' ]; then
-  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/vmri_3.2.14_bin.zip
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/vmri.zip
 fi
 
 cd /usr/local
-sudo unzip ~/Downloads/vmri_3.2.14_bin.zip
-sudo cp -r vmri_3.2.14_bin/dist .
-sudo mv dist vmri
+sudo unzip ~/Downloads/vmri.zip
 
 
 #3D Slicer
