@@ -60,7 +60,7 @@ sudo apt-get install -y mriconvert
 echo "Install Virtual MRI"
 cd $HOME/Downloads
 
-if [ ! -e 'vmri_3.2.14_bin.zip' ]; then
+if [ ! -e 'vmri.zip' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/vmri.zip
 fi
 
