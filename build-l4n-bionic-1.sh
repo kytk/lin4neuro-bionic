@@ -38,6 +38,16 @@ do
      continue
   elif [ $lang == "Japanese" ] ; then
 
+     #Setup Japanese locale
+     sudo apt-get install -y language-pack-ja
+     sudo update-locale LANG=ja_JP.UTF-8
+
+     #Setup tzdata
+     sudo dpkg-reconfigure tzdata
+
+     #replace us with ja in  /etc/apt/sources.list
+     sudo sed -i 's|http://us.|http://ja.|g' /etc/apt/sources.list
+
      #Setup Neurodebian repository using repo in Japan
      wget -O- http://neuro.debian.net/lists/bionic.jp.full | \
      sudo tee /etc/apt/sources.list.d/neurodebian.sources.list
@@ -48,10 +58,6 @@ do
      #Setup Neurodebian repository using in repo in us-nh
      wget -O- http://neuro.debian.net/lists/bionic.us-nh.full | \
      sudo tee /etc/apt/sources.list.d/neurodebian.sources.list
-
-     #Setup Japanese locale
-     sudo apt-get install -y language-pack-ja
-     sudo update-locale LANG=ja_JP.UTF-8
 
      break
   elif [ $lang == "quit" ] ; then
