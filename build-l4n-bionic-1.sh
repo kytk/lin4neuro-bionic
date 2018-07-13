@@ -47,6 +47,7 @@ do
 
      #replace us with ja in  /etc/apt/sources.list
      sudo sed -i 's|http://us.|http://ja.|g' /etc/apt/sources.list
+     sudo apt-get update
 
      #Setup Neurodebian repository using repo in Japan
      wget -O- http://neuro.debian.net/lists/bionic.jp.full | \
