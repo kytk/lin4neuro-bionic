@@ -6,6 +6,7 @@
 #Kiyotaka Nemoto 15-Apr-2018
 
 #ChangeLog
+#13-Jul-2018 assume that installation of mini.iso is under English locale.
 #15-Apr-2018 move update LibreOffice and VirtualBox related settings to part2
 #15-Apr-2018 change to use the latest kernel (hwe-16.04-edge)
 #07-Apr-2018 add linux-headers
@@ -48,6 +49,10 @@ do
      wget -O- http://neuro.debian.net/lists/bionic.us-nh.full | \
      sudo tee /etc/apt/sources.list.d/neurodebian.sources.list
 
+     #Setup Japanese locale
+     sudo apt-get install -y language-pack-ja
+     sudo update-locale LANG=ja_JP.UTF-8
+
      break
   elif [ $lang == "quit" ] ; then
      echo "quit."
@@ -61,7 +66,6 @@ done
 sudo apt-key add neuro.debian.net.asc
 
 #Installation of XFCE 4.12
-LANG=C
 echo "Installation of XFCE 4.12"
 sudo apt-get -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 	xfce4-power-manager-plugins lightdm lightdm-gtk-greeter 	\
