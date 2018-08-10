@@ -6,6 +6,7 @@
 #Kiyotaka Nemoto 15-Apr-2018
 
 #ChangeLog
+#10-Aug-2018 add ntp
 #13-Jul-2018 assume that installation of mini.iso is under English locale.
 #15-Apr-2018 move update LibreOffice and VirtualBox related settings to part2
 #15-Apr-2018 change to use the latest kernel (hwe-16.04-edge)
@@ -87,7 +88,7 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	gnome-system-monitor gnome-system-tools gparted		\
 	imagemagick nemo ntp system-config-printer-gnome 	\
 	system-config-samba tree unzip update-manager vim 	\
-	wajig xfce4-screenshooter zip 
+	wajig xfce4-screenshooter zip ntp
 
 #Install the latest kernel
 sudo apt-get -y install linux-image-generic-hwe-16.04-edge
