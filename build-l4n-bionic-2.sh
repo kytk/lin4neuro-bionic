@@ -20,7 +20,7 @@ exec &> >(tee -a "$log")
 sudo apt-get -y install linux-headers-$(uname -a | awk '{ print $3 }')
 
 ##Install virtualbox-guest-dkms
-sudo apt-get install -y virtualbox-guest-dkms
+sudo apt-get install -y virtualbox-guest-dkms virtualbox-guest-x11
 sudo usermod -aG vboxsf $(whoami)
 
 ##Virtualbox-related settings
