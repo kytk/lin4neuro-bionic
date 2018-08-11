@@ -51,7 +51,7 @@ ROBEX
 
 #Virtual MRI
 echo "Virtual MRI"
-virtual-mri &
+java -jar /usr/local/vmri/vmri.jar
 wait
 
 
