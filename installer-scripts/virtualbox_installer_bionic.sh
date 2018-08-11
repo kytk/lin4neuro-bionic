@@ -6,7 +6,7 @@ aptlist=/etc/apt/sources.list
 
 echo '' | sudo tee -a $aptlist
 echo '#VirtualBox' | sudo tee -a $aptlist
-echo 'deb https://download.virtualbox.org/virtualbox/debian xenial contrib' \
+echo 'deb https://download.virtualbox.org/virtualbox/debian bionic contrib' \
 	| sudo tee -a $aptlist
 
 #Public key for apt-secure
