@@ -5,6 +5,7 @@
 #Kiyotaka Nemoto 15-Apr-2018
 
 #Changelog
+#11-Aug-2018 Update R-related settings
 #10-Aug-2018 Update Aliza
 #10-Aug-2018 Add DCMTK
 #15-Apr-2018 move VirtualBox settings and update the Libreoffice to the part 2
@@ -49,7 +50,7 @@ echo "Install R using cran.rstudio.com repository"
 grep rstudio /etc/apt/sources.list > /dev/null
 if [ $? -eq 1 ]; then
   sudo add-apt-repository \
-  'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu bionic/'
+  'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
 fi
 sudo apt-get -y update
 sudo apt-get install -y r-base
