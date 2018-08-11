@@ -227,10 +227,10 @@ cd /usr/local
 sudo unzip ~/Downloads/mricrogl_linux.zip
 sudo mv mricrogl_lx mricrogl
 cd mricrogl
-sudo rm .DS_Store
+#sudo rm .DS_Store
 sudo find -type f -exec chmod 644 {} \;
 sudo find -type d -exec chmod 755 {} \;
-sudo chmod 755 MRIcroGL dcm2niix pigz_mricron
+sudo chmod 755 MRIcroGL dcm2niix
 
 grep mricrogl ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then
