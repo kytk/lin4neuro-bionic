@@ -5,7 +5,7 @@
 #Kiyotaka Nemoto 15-Apr-2018
 
 #Changelog
-#11-Aug-2018 Update R-related settings
+#11-Aug-2018 Update R-related settings and dsistudio
 #10-Aug-2018 Update Aliza
 #10-Aug-2018 Add DCMTK
 #15-Apr-2018 move VirtualBox settings and update the Libreoffice to the part 2
@@ -108,16 +108,16 @@ sudo apt install -y ./aliza_1.43.4.6.deb
 #DSIStudio
 echo "Install DSI Studio"
 sudo apt-get install -y \
-  libboost-thread1.58.0 libboost-program-options1.58.0 qt5-default
+  libboost-thread1.65.1 libboost-program-options1.65.1 qt5-default
 
 cd $HOME/Downloads
 
-if [ ! -e 'dsistudio.zip' ]; then
-  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/dsistudio.zip
+if [ ! -e 'dsistudio1804.zip' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/dsistudio1804.zip
 fi
 
 cd /usr/local
-sudo unzip ~/Downloads/dsistudio.zip
+sudo unzip ~/Downloads/dsistudio1804.zip
 
 #ROBEX
 echo "Install ROBEX"
