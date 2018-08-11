@@ -44,11 +44,17 @@ fi
 echo "install libjpeg62"
 sudo apt install -y libjpeg62
 
+# install libpng12
+echo "install libpng12"
+cd $HOME/Downloads
+curl -o http://security.ubuntu.com/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1.1_amd64.deb
+sudo apt install -y ./libpng12-0_1.2.54-1ubuntu1.1_amd64.deb
+
 # download freesurfer
 if [ ! -e $HOME/Downloads/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz ]; then
 	echo "Download Freesurfer to $HOME/Downloads"
 	cd $HOME/Downloads
-	wget -c ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.0/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
+	curl -o ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.0/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
 else
 	echo "Freesurfer archive is found in $HOME/Downloads"
 fi
@@ -62,7 +68,7 @@ md5sum -c freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
 
 while [ "$?" -ne 0 ]; do
     echo "Filesize is not correct. Re-try downloading."
-    wget -c ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.0/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
+    curl -o ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.0/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
     md5sum -c freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
 done
 
