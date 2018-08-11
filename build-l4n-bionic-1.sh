@@ -1,12 +1,12 @@
 #!/bin/bash
-#Lin4Neuro making script for Ubuntu 16.04 (Xenial)
+#Lin4Neuro making script for Ubuntu 18.04 (Bionic)
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#Kiyotaka Nemoto 15-Apr-2018
+#Kiyotaka Nemoto 11-Aug-2018
 
 #ChangeLog
-#11-Aug-2018 add tcsh
+#11-Aug-2018 add tcsh and update signature for Neurodebian repository
 #10-Aug-2018 add ntp
 #13-Jul-2018 assume that installation of mini.iso is under English locale.
 #15-Apr-2018 move update LibreOffice and VirtualBox related settings to part2
@@ -70,9 +70,11 @@ do
 done
 
 #Signature for neurodebian
-sudo apt-key adv --recv-keys --keyserver \
-     hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9
+#sudo apt-key adv --recv-keys --keyserver \
+#     hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9
 #sudo apt-key add neuro.debian.net.asc
+gpg --keyserver hkp://pool.sks-keyservers.net:80 --recv-keys 0xA5D32F012649A5A9
+gpg -a --export 0xA5D32F012649A5A9 | sudo apt-key add -
 
 #Installation of XFCE 4.12
 echo "Installation of XFCE 4.12"
