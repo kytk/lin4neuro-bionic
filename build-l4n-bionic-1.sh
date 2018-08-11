@@ -6,6 +6,7 @@
 #Kiyotaka Nemoto 11-Aug-2018
 
 #ChangeLog
+#12-Aug-2018 add baobab
 #11-Aug-2018 add tcsh and update signature for Neurodebian repository
 #10-Aug-2018 add ntp
 #13-Jul-2018 assume that installation of mini.iso is under English locale.
@@ -91,7 +92,7 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	gnome-system-monitor gnome-system-tools gparted		\
 	imagemagick nemo ntp system-config-printer-gnome 	\
 	system-config-samba tree unzip update-manager vim 	\
-	wajig xfce4-screenshooter zip ntp tcsh
+	wajig xfce4-screenshooter zip ntp tcsh baobab
 
 #Install the latest kernel
 sudo apt-get -y install linux-image-generic
