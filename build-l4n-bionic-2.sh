@@ -252,8 +252,8 @@ fi
 #sudo rm -rf __MACOSX
 cd $HOME
 unzip ~/Downloads/tutorial.zip
-find . -name '__MACOSX' --exec rm {} \;
-find . -name '.DS_Stor' -exec rm {} \;
+find $HOME -name '__MACOSX' -exec rm -rf {} \;
+find $HOME -name '.DS_Store' -exec rm -rf {} \;
 
 #packages to be installed by users (with installer)
 #ANTs
