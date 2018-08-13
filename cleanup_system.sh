@@ -11,10 +11,11 @@ sudo apt-get -y clean
 #Remove unnecessary kernels
 sudo purge-old-kernels
 
+#Remove logs
+rm ~/git/lin4neuro-bionic/*.log
+
 #Remove history
 export HISTSIZE=0; cd $HOME; rm .bash_history
 
 exit
-
-
 
