@@ -6,6 +6,7 @@
 #Kiyotaka Nemoto 11-Aug-2018
 
 #ChangeLog
+#13-Aug-2018 add gnupg and gnupg2
 #12-Aug-2018 add baobab
 #11-Aug-2018 add tcsh and update signature for Neurodebian repository
 #10-Aug-2018 add ntp
@@ -25,7 +26,7 @@
 #echo '--inet4-only=1' >> ~/.wgetrc
 
 LANG=C
-sudo apt-get update; sudo apt-get -y upgrade
+sudo apt-get update; sudo apt-get -y upgrade; apt-get -y install gnupg gnupg2
 
 log=`date +%Y%m%d%H%M%S`-part1.log
 exec &> >(tee -a "$log")
