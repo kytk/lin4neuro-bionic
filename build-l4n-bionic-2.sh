@@ -247,12 +247,13 @@ if [ ! -e 'tutorial.zip' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/tutorial.zip
 fi
 
-cd /etc/skel
-sudo unzip ~/Downloads/tutorial.zip
-sudo rm -rf __MACOSX
+#cd /etc/skel
+#sudo unzip ~/Downloads/tutorial.zip
+#sudo rm -rf __MACOSX
 cd $HOME
 unzip ~/Downloads/tutorial.zip
-rm -rf __MACOSX
+find . -name '__MACOSX' --exec rm {} \;
+find . -name '.DS_Stor' -exec rm {} \;
 
 #packages to be installed by users (with installer)
 #ANTs
