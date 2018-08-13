@@ -73,9 +73,9 @@ done
 #Signature for neurodebian
 #sudo apt-key adv --recv-keys --keyserver \
 #     hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9
-#sudo apt-key add neuro.debian.net.asc
-gpg --keyserver hkp://pool.sks-keyservers.net:80 --recv-keys 0xA5D32F012649A5A9
-gpg -a --export 0xA5D32F012649A5A9 | sudo apt-key add -
+sudo apt-key add neuro.debian.net.asc
+#gpg --keyserver hkp://pool.sks-keyservers.net:80 --recv-keys 0xA5D32F012649A5A9
+#gpg -a --export 0xA5D32F012649A5A9 | sudo apt-key add -
 
 #Installation of XFCE 4.12
 echo "Installation of XFCE 4.12"
