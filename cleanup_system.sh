@@ -14,6 +14,9 @@ sudo purge-old-kernels
 #Remove logs
 rm ~/git/lin4neuro-bionic/*.log
 
+#Remove downloads
+rm ~/Downloads/*
+
 #Remove history
 export HISTSIZE=0; cd $HOME; rm .bash_history
 
