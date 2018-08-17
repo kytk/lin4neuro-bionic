@@ -3,9 +3,9 @@
 #AFNI Installer
 #This scripts install AFNI in /usr/local/AFNIbin
 
-#This is based on https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/background_install/install_instructs/steps_linux_ubuntu16.html
+#This is basically based on https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/background_install/install_instructs/steps_linux_ubuntu16.html
 
-#11 Aug 2018 K. Nemoto
+#18 Aug 2018 K. Nemoto
 
 #Install prerequisite packages
 sudo apt update
@@ -15,6 +15,12 @@ sudo apt install -y tcsh xfonts-base python-qt4       \
 
 sudo apt install -y libglu1-mesa-dev libglw1-mesa     \
                     libxm4 build-essential
+
+#Install necessary packages especially for Ubuntu 18.04
+sudo apt install libcurl4-openssl-dev libxml2-dev libssl-dev libgfortran3
+
+#make a symbolic link for libgsl.so
+sudo ln -s /usr/lib/x86_64-linux-gnu/libgsl.so.23 /usr/lib/x86_64-linux-gnu/libgsl.so.19
 
 #Download AFNI binary and installer
 cd $HOME/Downloads
