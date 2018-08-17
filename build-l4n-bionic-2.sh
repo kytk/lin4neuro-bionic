@@ -5,6 +5,7 @@
 #Kiyotaka Nemoto 15-Apr-2018
 
 #Changelog
+#18-Aug-2018 Change R to the official repository (to keep consisitency with AFNI)
 #11-Aug-2018 Update R-related settings and dsistudio
 #10-Aug-2018 Update Aliza
 #10-Aug-2018 Add DCMTK
@@ -42,17 +43,17 @@ currentdir=`echo $(cd $(dirname $0) && pwd)`
 base_path=$currentdir/lin4neuro-parts
 
 #R
-sudo apt-key adv --keyserver keyserver.ubuntu.com \
-     --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-
-echo "Install R using cran.rstudio.com repository"
-
-grep rstudio /etc/apt/sources.list > /dev/null
-if [ $? -eq 1 ]; then
-  sudo add-apt-repository \
-  'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
-fi
-sudo apt-get -y update
+#sudo apt-key adv --keyserver keyserver.ubuntu.com \
+#     --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+#
+#echo "Install R using cran.rstudio.com repository"
+#
+#grep rstudio /etc/apt/sources.list > /dev/null
+#if [ $? -eq 1 ]; then
+#  sudo add-apt-repository \
+#  'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
+#fi
+#sudo apt-get -y update
 sudo apt-get install -y r-base
 
 #DCMTK
