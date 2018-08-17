@@ -9,17 +9,18 @@
 
 #Install prerequisite packages
 sudo apt update
-sudo apt install -y tcsh xfonts-base python-qt4       \
-                   gsl-bin netpbm gnome-tweak-tool    \
-                   libjpeg62 xvfb xterm vim curl
+sudo apt-get install -y tcsh xfonts-base python-qt4       \
+                       gsl-bin netpbm gnome-tweak-tool    \
+                       libjpeg62 xvfb xterm vim curl
 
-sudo apt install -y libglu1-mesa-dev libglw1-mesa     \
-                    libxm4 build-essential
+sudo apt-get install -y libglu1-mesa-dev libglw1-mesa     \
+                       libxm4 build-essential
 
 #Install necessary packages especially for Ubuntu 18.04
-sudo apt install libcurl4-openssl-dev libxml2-dev libssl-dev libgfortran3
+sudo apt-get install -y libcurl4-openssl-dev libxml2-dev  \
+                       libssl-dev libgfortran3
 
-#make a symbolic link for libgsl.so
+#make a symbolic link for libgsl.so for Ubuntu 18.04
 sudo ln -s /usr/lib/x86_64-linux-gnu/libgsl.so.23 /usr/lib/x86_64-linux-gnu/libgsl.so.19
 
 #Download AFNI binary and installer
