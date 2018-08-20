@@ -3,18 +3,34 @@
 #AFNI Installer part 2
 #This scripts install R AFNI in /usr/local/AFNIbin
 
-#This is based on https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/background_install/install_instructs/steps_linux_ubuntu16.html
+#This is basically based on https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/background_install/install_instructs/steps_linux_ubuntu16.html
 
-#11 Aug 2018 K. Nemoto
+#18 Aug 2018 K. Nemoto
 
 cd $HOME
 
 #Setup R
 export R_LIBS=$HOME/R
-mkdir $R_LIBS
-echo 'export R_LIBS=$HOME/R' >> ~/.bashrc
-#curl -O https://afni.nimh.nih.gov/pub/dist/src/scripts_src/@add_rcran_ubuntu.tcsh
-#sudo tcsh @add_rcran_ubuntu.tcsh
+
+if [ ! -e ~/R ]; then
+    mkdir $R_LIBS
+else
+    echo "$R_LIBS already exists."
+fi
+
+grep R_LIBS ~/.bashrc > /dev/null
+if [ $? -eq 1 ]; then
+    echo '' >> ~/.bashrc
+    echo '#R for AFNI' >> ~/.bashrc
+    echo 'export R_LIBS=$HOME/R' >> ~/.bashrc
+fi
+
+#Install new R, removing any old one first.
+sudo apt-get remove -y r-base r-base-core r-base-dev
+sudo apt-get update
+sudo apt-get install -y r-base-dev r-cran-rmpi
+
+#Install rPkgs
 rPkgsInstall -pkgs ALL
 
 #Evaluate setup
