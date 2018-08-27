@@ -3,9 +3,10 @@
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#Kiyotaka Nemoto 11-Aug-2018
+#Kiyotaka Nemoto 27-Aug-2018
 
 #ChangeLog
+#27-Aug-2018 add xterm
 #12-Aug-2018 add baobab
 #11-Aug-2018 add tcsh and update signature for Neurodebian repository
 #10-Aug-2018 add ntp
@@ -92,7 +93,7 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	gnome-system-monitor gnome-system-tools gparted		\
 	imagemagick nemo ntp system-config-printer-gnome 	\
 	system-config-samba tree unzip update-manager vim 	\
-	wajig xfce4-screenshooter zip ntp tcsh baobab
+	wajig xfce4-screenshooter zip ntp tcsh baobab xterm
 
 #Install the latest kernel
 sudo apt-get -y install linux-image-generic
