@@ -6,9 +6,9 @@ echo "Check if neuroimaging software is properly installed."
 
 
 #Slicer
-echo "Run Slicer"
-Slicer &
-wait
+#echo "Run Slicer"
+#Slicer &
+#wait
 
 #Aliza
 echo "Run Aliza"
