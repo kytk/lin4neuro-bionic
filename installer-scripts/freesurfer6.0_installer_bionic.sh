@@ -10,7 +10,7 @@ echo "Begin installation of FreeSurfer"
 echo
 echo "This script will download and install Freesurfer in Ubuntu 18.04"
 echo "You need to prepare license.txt beforehand."
-echo "license.txt should be placed in $HOME/Downloads"
+echo "license.txt should be placed in /media/sf_share"
 
 while true; do
 
@@ -31,9 +31,9 @@ read answer
     esac
 done
 
-echo "Check if you have license.txt in $HOME/Downloads"
+echo "Check if you have license.txt in /media/sf_share"
 
-if [ -e $HOME/Downloads/license.txt ]; then
+if [ ! -e /media/sf_share/license.txt ]; then
     echo "license.txt exists. Continue installation."
 else
     echo "You need to prepare license.txt"
@@ -81,7 +81,7 @@ cd /usr/local
 sudo tar xvzf $HOME/Downloads/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
 
 if [ -d "/usr/local/freesurfer" ]; then
-    sudo cp $HOME/Downloads/license.txt /usr/local/freesurfer
+    sudo cp /media/sf_share/license.txt /usr/local/freesurfer
 else
     echo "freesurfer is not extracted correctly."
     exit 1
