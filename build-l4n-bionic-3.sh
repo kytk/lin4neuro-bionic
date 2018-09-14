@@ -2,6 +2,10 @@
 
 #Part3: Check if software is installed.
 
+log=`date +%Y%m%d%H%M%S`-part3.log
+exec &> >(tee -a "$log")
+
+
 echo "Check if neuroimaging software is properly installed."
 
 
