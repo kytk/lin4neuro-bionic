@@ -17,6 +17,9 @@
 log=`date +%Y%m%d%H%M%S`-part2.log
 exec &> >(tee -a "$log")
 
+#Signature for Neurodebian
+sudo apt-key add neuro.debian.net.asc
+
 #Libreoffice
 sudo add-apt-repository -y ppa:libreoffice/ppa
 sudo apt-get update
