@@ -1,11 +1,14 @@
 #!/bin/bash
+
 #Lin4Neuro making script for Ubuntu 18.04 (Bionic)
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#Kiyotaka Nemoto 27-Aug-2018
+#Kiyotaka Nemoto 14-Sep-2018
 
 #ChangeLog
+#14-Sep-2018 move virtualbox-related settings from part 2 to part 1
+#13-Sep-2018 Delete GRUB settings 
 #27-Aug-2018 add xterm
 #12-Aug-2018 add baobab
 #11-Aug-2018 add tcsh and update signature for Neurodebian repository
@@ -30,6 +33,30 @@ sudo apt-get update; sudo apt-get -y upgrade
 
 log=`date +%Y%m%d%H%M%S`-part1.log
 exec &> >(tee -a "$log")
+
+echo "Begin making Lin4Neuro."
+echo "Do you want to install virtualbox-guest? (Yes/No)"
+select vbguest in "Yes" "No" "quit"
+do
+  if [ $REPLY = "q" ] ; then
+    echo "quit."
+    exit 0
+  fi
+  if [ -z "$vbguest" ] ; then
+    continue
+  elif [ $vbguest == "Yes" ] ; then
+    echo "VirtualBox guest will be installed later."
+    vbinstall=1
+    break
+  elif [ $vbguest == "No" ] ; then
+    echo "VirtualBox guest will not be installed."
+    vbinstall=0
+    break
+  elif [ $vbguest == "quit" ] ; then
+    echo "quit."
+    exit 0
+  fi
+done
 
 echo "Which language do you want to build? (English/Japanese)"
 select lang in "English" "Japanese" "quit"
@@ -206,6 +233,21 @@ sudo apt-get -y autoremove
 #uncomment following two lines if you don't want to show GRUB menu
 #sudo sed -i -e 's/GRUB_HIDDEN_TIMEOUT/#GRUB_HIDDEN_TIMEOUT/' /etc/default/grub
 #sudo update-grub
+
+#VirtualBox guest related settings
+if [ $vbinstall -eq 1 ]; then
+    echo "Install the kernel header"
+    sudo apt-get -y install linux-headers-$(uname -a | awk '{ print $3 }')
+
+    echo "Install virtualbox guest"
+    sudo apt-get install -y virtualbox-guest-dkms virtualbox-guest-x11
+    sudo usermod -aG vboxsf $(whoami)
+
+    #fstab
+    echo '' | sudo tee -a /etc/fstab
+    echo '#Virtualbox shared folder' | sudo tee -a /etc/fstab
+    echo 'share /media/sf_share vboxsf _netdev,uid=1000,gid=1000 0 0' | sudo tee -a /etc/fstab
+fi
 
 echo "Finished! The system will reboot in 10 seconds."
 echo "Please run build-l4n-bionic-2.sh to install neuroimaging packages."

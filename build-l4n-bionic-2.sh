@@ -1,10 +1,11 @@
 #!/bin/bash
 #Lin4Neuro making script part 2
-#Installation of Virtualbox-related packages and Neuroimaging software packages
+#Installation of Neuroimaging software packages
 #Prerequisite: You need to finish the build-l4n-bionic-1.sh.
-#Kiyotaka Nemoto 15-Apr-2018
+#Kiyotaka Nemoto 14-Sep-2018
 
 #Changelog
+#14-Sep-2018 Move virtualbox guest related settings to Part 1
 #18-Aug-2018 Change R to the official repository (to keep consisitency with AFNI)
 #11-Aug-2018 Update R-related settings and dsistudio
 #10-Aug-2018 Update Aliza
@@ -15,23 +16,6 @@
 #Log
 log=`date +%Y%m%d%H%M%S`-part2.log
 exec &> >(tee -a "$log")
-
-#Virtualbox-related settings
-##Install the kernel header
-sudo apt-get -y install linux-headers-$(uname -a | awk '{ print $3 }')
-
-##Install virtualbox-guest-dkms
-sudo apt-get install -y virtualbox-guest-dkms virtualbox-guest-x11
-sudo usermod -aG vboxsf $(whoami)
-
-##Virtualbox-related settings
-#sudo sh -c 'echo 'vboxsf' >> /etc/modules'
-
-echo '' | sudo tee -a /etc/fstab
-echo '#Virtualbox shared folder' | sudo tee -a /etc/fstab
-echo 'share   /media/sf_share vboxsf    _netdev,uid=1000,gid=1000    0    0' | sudo tee -a /etc/fstab
-
-sudo mkdir /media/sf_share
 
 #Libreoffice
 sudo add-apt-repository -y ppa:libreoffice/ppa
@@ -75,26 +59,6 @@ fi
 cd /usr/local
 sudo unzip ~/Downloads/vmri.zip
 
-
-#3D Slicer
-#echo "Install 3D Slicer"
-#cd $HOME/Downloads
-#
-#if [ ! -e 'Slicer-4.8.1-linux-amd64.tar.gz' ]; then
-#  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/Slicer-4.8.1-linux-amd64.tar.gz
-#fi
-#
-#cd /usr/local
-#sudo tar xvzf ~/Downloads/Slicer-4.8.1-linux-amd64.tar.gz
-#sudo mv Slicer-4.8.1-linux-amd64 Slicer
-#
-#grep Slicer ~/.bashrc > /dev/null
-#if [ $? -eq 1 ]; then
-#    echo '' >> ~/.bashrc
-#    echo '#Slicer' >> ~/.bashrc
-#    echo 'export PATH=$PATH:/usr/local/Slicer' >> ~/.bashrc
-#fi
-
 #Aliza
 echo "Install Aliza"
 cd $HOME/Downloads
@@ -104,7 +68,6 @@ if [ ! -e 'aliza_1.43.4.6.deb' ]; then
 fi
 
 sudo apt install -y ./aliza_1.43.4.6.deb
-
 
 #DSIStudio
 echo "Install DSI Studio"
@@ -228,7 +191,6 @@ cd /usr/local
 sudo unzip ~/Downloads/mricrogl_linux.zip
 sudo mv mricrogl_lx mricrogl
 cd mricrogl
-#sudo rm .DS_Store
 sudo find -type f -exec chmod 644 {} \;
 sudo find -type d -exec chmod 755 {} \;
 sudo chmod 755 MRIcroGL dcm2niix
@@ -248,23 +210,23 @@ if [ ! -e 'tutorial.zip' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/tutorial.zip
 fi
 
-#cd /etc/skel
-#sudo unzip ~/Downloads/tutorial.zip
-#sudo rm -rf __MACOSX
 cd $HOME
 unzip ~/Downloads/tutorial.zip
+
+#Remove MacOS hidden files
 find $HOME -name '__MACOSX' -exec rm -rf {} \;
 find $HOME -name '.DS_Store' -exec rm -rf {} \;
+sudo find /usr/local -name '__MACOSX' -exec sudo rm -rf {} \;
+sudo find /usr/local -name '.DS_Store' -exec sudo rm -rf {} \;
 
 #packages to be installed by users (with installer)
 #ANTs
-#CONN17f
+#CONN
 #FSL
-#SPM12 standalone
+#Slicer
+#SPM12
 
-ln -s ${currentdir}/installer ~/Desktop 
-
-#Add the line above to .profile
+#Add the symbolic link to the installer to ~/.profile
 cat << EOS >> ~/.profile
 
 #symbolic links
@@ -274,7 +236,7 @@ fi
 
 EOS
 
-#PATH for installer
+#PATH for installer scripts
 
 #grep installer-scripts ~/.bashrc > /dev/null
 #if [ $? -eq 1 ]; then
