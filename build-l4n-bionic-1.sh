@@ -4,9 +4,10 @@
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#Kiyotaka Nemoto 14-Sep-2018
+#Kiyotaka Nemoto 15-Sep-2018
 
 #ChangeLog
+#15-Sep-2018 add bleachbit
 #14-Sep-2018 move virtualbox-related settings from part 2 to part 1
 #13-Sep-2018 Delete GRUB settings 
 #27-Aug-2018 add xterm
@@ -99,9 +100,11 @@ do
 done
 
 #Signature for neurodebian
+sudo apt-key add neuro.debian.net.asc
+#Alternative way 1
 #sudo apt-key adv --recv-keys --keyserver \
 #     hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9
-sudo apt-key add neuro.debian.net.asc
+#Alternative way 2
 #gpg --keyserver hkp://pool.sks-keyservers.net:80 --recv-keys 0xA5D32F012649A5A9
 #gpg -a --export 0xA5D32F012649A5A9 | sudo apt-key add -
 
@@ -120,7 +123,8 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	gnome-system-monitor gnome-system-tools gparted		\
 	imagemagick nemo ntp system-config-printer-gnome 	\
 	system-config-samba tree unzip update-manager vim 	\
-	wajig xfce4-screenshooter zip ntp tcsh baobab xterm
+	wajig xfce4-screenshooter zip ntp tcsh baobab xterm     \
+        bleachbit
 
 #Install the latest kernel
 sudo apt-get -y install linux-image-generic
