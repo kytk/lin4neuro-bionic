@@ -1,6 +1,6 @@
 #!/bin/bash
-#freesurfer_6.0_installer.sh
-#Script to install freesurfer v6.0.0.
+#freesurfer_6.0.1_installer.sh
+#Script to install freesurfer v6.0.1
 #This script downloads required files, install them, and configure that
 #subject directory is under $HOME
 
@@ -43,7 +43,7 @@ read answer
           ;;
         [Nn]*)
           echo "will not modify recon-all."
-	  break
+          break
           ;;
         *)
           echo -e "Please type yes or no. \n"
@@ -71,10 +71,10 @@ curl -O http://security.ubuntu.com/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.5
 sudo apt install -y ./libpng12-0_1.2.54-1ubuntu1.1_amd64.deb
 
 # download freesurfer
-if [ ! -e $HOME/Downloads/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz ]; then
+if [ ! -e $HOME/Downloads/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.1.tar.gz ]; then
 	echo "Download Freesurfer to $HOME/Downloads"
 	cd $HOME/Downloads
-	curl -O -C - ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.0/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
+	curl -O -C - ftp://ftp.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.1/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.1.tar.gz
 else
 	echo "Freesurfer archive is found in $HOME/Downloads"
 fi
@@ -82,23 +82,23 @@ fi
 # check the archive
 cd $HOME/Downloads
 echo "Check if the downloaded archive is not corrupt."
-echo "d49e9dd61d6467f65b9582bddec653a4  freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz" > freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
+echo "09c7cfa5b6818c0c285b5f52f4578513  freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.1.tar.gz" > freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.1.tar.gz.md5
 
-md5sum -c freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
+md5sum -c freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.1.tar.gz.md5
 
 while [ "$?" -ne 0 ]; do
     echo "Filesize is not correct. Re-try downloading."
-    curl -O -C - ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.0/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
-    md5sum -c freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
+    curl -O -C - ftp://ftp.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.1/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.1.tar.gz
+    md5sum -c freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.1.tar.gz.md5
 done
 
 echo "Filesize is correct!"
-rm freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz.md5
+rm freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.1.tar.gz.md5
 
 # install freesurfer
 echo "Install freesurfer"
 cd /usr/local
-sudo tar xvzf $HOME/Downloads/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
+sudo tar xvzf $HOME/Downloads/freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.1.tar.gz
 
 if [ -d "/usr/local/freesurfer" ]; then
     sudo cp $HOME/Downloads/license.txt /usr/local/freesurfer
@@ -128,11 +128,8 @@ else
     echo 'source $FREESURFER_HOME/SetUpFreeSurfer.sh' >> $HOME/.bashrc
 fi
 
-
-if [ $reconallvb -eq 1 ]; then
-    # replace 'ln -s' with 'cp' for virtualbox environment
-    sudo sed -i 's/ln -s \$hemi/cp \$hemi/' /usr/local/freesurfer/bin/recon-all
-fi
+# replace 'ln -s' with 'cp' for virtualbox environment
+sudo sed -i 's/ln -s \$hemi/cp \$hemi/' /usr/local/freesurfer/bin/recon-all
 
 echo "Installation finished!"
 echo "Now close this terminal, open another terminal, and run fs_check_6.0.sh"
