@@ -58,6 +58,7 @@ if [ ! -e $HOME/Downloads/license.txt ]; then
 else
     echo "You need to prepare license.txt"
     echo "Abort installation. Please run the script after you put license.txt in $HOME/Downloads"
+    exit 1
 fi
 
 # install libjpeg62
