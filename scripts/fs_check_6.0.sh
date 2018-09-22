@@ -2,8 +2,6 @@
 
 echo "Test the installation of freesurfer"
 
-echo "freeview. Close the window to proceed the script."
-
 #The command is based on http://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall
 
 cd $SUBJECTS_DIR
