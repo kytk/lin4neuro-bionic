@@ -4,7 +4,7 @@
 #This script downloads required files, install them, and configure that
 #subject directory is under $HOME
 
-#17 Sep 2018 K. Nemoto
+#23 Sep 2018 K. Nemoto
 
 echo "Begin installation of FreeSurfer"
 echo
@@ -53,7 +53,7 @@ done
 
 echo "Check if you have license.txt in $HOME/Downloads"
 
-if [ ! -e $HOME/Downloads/license.txt ]; then
+if [ -e $HOME/Downloads/license.txt ]; then
     echo "license.txt exists. Continue installation."
 else
     echo "You need to prepare license.txt"
