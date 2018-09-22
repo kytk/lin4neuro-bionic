@@ -62,8 +62,9 @@ else
 fi
 
 # install libjpeg62
-echo "install libjpeg62"
-sudo apt install -y libjpeg62
+cd $HOME/Downloads
+curl -O http://security.ubuntu.com/ubuntu/pool/universe/libj/libjpeg6b/libjpeg62_6b2-3_amd64.deb
+sudo apt install -y ./libjpeg62_6b2-3_amd64.deb
 
 # install libpng12
 echo "install libpng12"
