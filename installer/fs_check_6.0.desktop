@@ -3,9 +3,9 @@ Version=1.0
 Type=Application
 Name=Check FreeSurfer 6.0
 Name[ja]=FreeSurfer 6.0の確認
-Exec=sh -c "~/git/lin4neuro-bionic/scripts/fs_check_6.0.sh"
+Exec=bash -c "~/git/lin4neuro-bionic/scripts/fs_check_6.0.sh"
 Icon=fscortex
 #Categories=Neuroimaging;
 StartupNotify=true
-Terminal=true
+Terminal=false
 
