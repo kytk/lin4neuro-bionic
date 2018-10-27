@@ -4,9 +4,10 @@
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#Kiyotaka Nemoto 15-Sep-2018
+#Kiyotaka Nemoto 28-Oct-2018
 
 #ChangeLog
+#28-Oct-2018 add libopenblas-base
 #15-Sep-2018 add bleachbit
 #14-Sep-2018 move virtualbox-related settings from part 2 to part 1
 #13-Sep-2018 Delete GRUB settings 
@@ -124,7 +125,7 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	imagemagick nemo ntp system-config-printer-gnome 	\
 	system-config-samba tree unzip update-manager vim 	\
 	wajig xfce4-screenshooter zip ntp tcsh baobab xterm     \
-        bleachbit
+        bleachbit libopenblas-base
 
 #Install the latest kernel
 sudo apt-get -y install linux-image-generic
