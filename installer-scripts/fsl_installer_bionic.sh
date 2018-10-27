@@ -17,7 +17,7 @@ if [ -z "$fslinstalled" ]; then
   else
     echo "found fslinstaller.py"
     cp $fslpyexist .
-    python fslinstaller.py
+    python2 fslinstaller.py
   fi
 
 else
