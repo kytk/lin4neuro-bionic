@@ -7,6 +7,7 @@
 #Kiyotaka Nemoto 28-Oct-2018
 
 #ChangeLog
+#03-Dec-2018 add cups and aprurl
 #28-Oct-2018 add libopenblas-base
 #15-Sep-2018 add bleachbit
 #14-Sep-2018 move virtualbox-related settings from part 2 to part 1
@@ -125,7 +126,7 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	imagemagick nemo ntp system-config-printer-gnome 	\
 	system-config-samba tree unzip update-manager vim 	\
 	wajig xfce4-screenshooter zip ntp tcsh baobab xterm     \
-        bleachbit libopenblas-base
+        bleachbit libopenblas-base cups apturl
 
 #Install the latest kernel
 sudo apt-get -y install linux-image-generic
