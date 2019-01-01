@@ -130,15 +130,12 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
         bleachbit libopenblas-base cups apturl dmz-cursor-theme
 
 #Installation of python libraries for machine learning
-sudo apt-get -y install build-essential pkg-config libopenblas-dev	\
-	liblapack-dev libhdf5-serial-dev graphviz 
-sudo apt-get -y install python3-venv python3-pip python3-dev	\
-	python-numpy python-scipy python3-matplotlib python-yaml	\
-	python-h5py python-opencv
-sudo -H pip3 install cmake pydot-ng keras jupyter
+sudo apt-get -y install build-essential pkg-config 		\
+	libopenblas-dev	liblapack-dev libhdf5-serial-dev graphviz 
+sudo apt-get -y install python3-venv python3-pip python3-dev	
+sudo -H pip3 install cmake numpy scipy matplotlib pyyaml h5py \
+	pydot-ng opencv-python keras jupyter
 sudo -H pip3 install --upgrade tensorflow
-
-
 
 #Install the latest kernel
 sudo apt-get -y install linux-image-generic
