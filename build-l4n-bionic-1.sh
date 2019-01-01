@@ -127,7 +127,7 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	imagemagick nemo ntp system-config-printer-gnome 	\
 	system-config-samba tree unzip update-manager vim 	\
 	wajig xfce4-screenshooter zip ntp tcsh baobab xterm     \
-        bleachbit libopenblas-base cups apturl
+        bleachbit libopenblas-base cups apturl dmz-cursor-theme
 
 #Installation of python libraries for machine learning
 sudo apt-get -y install build-essential pkg-config libopenblas-dev	\
