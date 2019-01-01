@@ -5,7 +5,7 @@
 #Kiyotaka Nemoto 01-Jan-2019
 
 #Changelog
-#01-Jan-2019 Add python libraries regarding machine learning
+#01-Jan-2019 Clean up the script
 #14-Sep-2018 Move virtualbox guest related settings to Part 1
 #18-Aug-2018 Change R to the official repository (to keep consisitency with AFNI)
 #11-Aug-2018 Update R-related settings and dsistudio
@@ -25,14 +25,6 @@ sudo apt-key add neuro.debian.net.asc
 sudo add-apt-repository -y ppa:libreoffice/ppa
 sudo apt-get update
 sudo apt-get -y dist-upgrade
-
-#Python for machine learning
-sudo apt-get -y install python3-pip python3-dev build-essential \
-     pkg-config libopenblas-dev liblapack-dev python-numpy python-scipy \
-     python3-matplotlib python-yaml libhdf5-serial-dev python-h5py graphviz \
-     python-opencv
-sudo -H pip3 install cmake pydot-ng keras jupyter
-sudo -H pip3 install --upgrade tensorflow
 
 #Setting of path of the setting scripts
 currentdir=`echo $(cd $(dirname $0) && pwd)`
@@ -248,14 +240,6 @@ fi
 
 EOS
 
-#PATH for installer scripts
-
-#grep installer-scripts ~/.bashrc > /dev/null
-#if [ $? -eq 1 ]; then
-#    echo '' >> ~/.bashrc
-#    echo '#PATH for installer' >> ~/.bashrc
-#    echo 'export PATH=$PATH:~/git/lin4neuro-bionic/installer-scripts' >> ~/.bashrc
-#fi
 
 echo "Finished!"
 
