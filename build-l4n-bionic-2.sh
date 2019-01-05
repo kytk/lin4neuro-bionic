@@ -2,9 +2,10 @@
 #Lin4Neuro making script part 2
 #Installation of Neuroimaging software packages
 #Prerequisite: You need to finish the build-l4n-bionic-1.sh.
-#Kiyotaka Nemoto 14-Sep-2018
+#Kiyotaka Nemoto 01-Jan-2019
 
 #Changelog
+#01-Jan-2019 Clean up the script
 #14-Sep-2018 Move virtualbox guest related settings to Part 1
 #18-Aug-2018 Change R to the official repository (to keep consisitency with AFNI)
 #11-Aug-2018 Update R-related settings and dsistudio
@@ -239,14 +240,6 @@ fi
 
 EOS
 
-#PATH for installer scripts
-
-#grep installer-scripts ~/.bashrc > /dev/null
-#if [ $? -eq 1 ]; then
-#    echo '' >> ~/.bashrc
-#    echo '#PATH for installer' >> ~/.bashrc
-#    echo 'export PATH=$PATH:~/git/lin4neuro-bionic/installer-scripts' >> ~/.bashrc
-#fi
 
 echo "Finished!"
 
