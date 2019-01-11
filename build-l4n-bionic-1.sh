@@ -4,9 +4,10 @@
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#Kiyotaka Nemoto 01-Jan-2019
+#Kiyotaka Nemoto 11-Jan-2019
 
 #ChangeLog
+#11-Jan-2019 add light-locker
 #01-Jan-2019 add python libraries for machine learning
 #03-Dec-2018 add cups and aprurl
 #28-Oct-2018 add libopenblas-base
@@ -116,7 +117,8 @@ echo "Installation of XFCE 4.12"
 sudo apt-get -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 	xfce4-power-manager-plugins lightdm lightdm-gtk-greeter 	\
 	shimmer-themes network-manager-gnome xinit build-essential 	\
-	dkms thunar-archive-plugin file-roller gawk fonts-noto xdg-utils
+	dkms thunar-archive-plugin file-roller gawk fonts-noto 		\
+	xdg-utils light-locker
 
 #Installation of misc packages
 echo "Installation of misc packages"
@@ -164,7 +166,7 @@ else
   sudo apt-get -y install libreoffice libreoffice-l10n-ja \
 	libreoffice-help-ja
 
-  #Change directories to English
+  #Change name of directories to English
   LANG=C xdg-user-dirs-update --force
   im-config -n fcitx
 fi
@@ -237,7 +239,7 @@ cp -r ${base_path}/config/xfce4 ~/.config
 #Clean packages
 sudo apt-get -y autoremove
 
-#GRUB setting for plymouth
+#GRUB setting for plymouth (obsolete)
 #echo '' | sudo tee -a /etc/default/grub
 #echo '#GRUB setting for plymouth' | sudo tee -a /etc/default/grub
 #echo 'GRUB_GFXPAYLOAD_LINUX="auto"' | sudo tee -a /etc/default/grub 
