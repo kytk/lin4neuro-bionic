@@ -4,9 +4,10 @@
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#Kiyotaka Nemoto 14-Jan-2019
+#Kiyotaka Nemoto 16-Jan-2019
 
 #ChangeLog
+#16-Jan-2019 add manpages-ja for the Japanese setting
 #14-Jan-2019 add python3-tk
 #11-Jan-2019 add light-locker
 #01-Jan-2019 add python libraries for machine learning
@@ -76,7 +77,7 @@ do
   elif [ $lang == "Japanese" ] ; then
 
      #Setup Japanese locale
-     sudo apt-get install -y language-pack-ja
+     sudo apt-get install -y language-pack-ja manpages-ja
      sudo update-locale LANG=ja_JP.UTF-8
 
      #Setup tzdata
@@ -92,6 +93,9 @@ do
 
      break
   elif [ $lang == "English" ] ; then
+
+     #Setup tzdata
+     sudo dpkg-reconfigure tzdata
 
      #Setup Neurodebian repository using in repo in us-nh
      wget -O- http://neuro.debian.net/lists/bionic.us-nh.full | \
@@ -135,8 +139,9 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 #Installation of python libraries for machine learning
 sudo apt-get -y install build-essential pkg-config 		\
 	libopenblas-dev	liblapack-dev libhdf5-serial-dev graphviz 
-sudo apt-get -y install python3-venv python3-pip python3-dev python3-tk	
-sudo -H pip3 install cmake numpy scipy matplotlib pyyaml h5py \
+sudo apt-get -y install python3-venv python3-pip python3-dev    \
+        python3-tk	
+sudo -H pip3 install cmake numpy scipy matplotlib pyyaml h5py   \
 	pydot-ng opencv-python keras jupyter
 sudo -H pip3 install --upgrade tensorflow
 
@@ -247,8 +252,8 @@ sudo apt-get -y autoremove
 #sudo sh -c 'echo 'FRAMEBUFFER=y' > /etc/initramfs-tools/conf.d/splash'
 #sudo update-grub
 
-#(Optional)Display GRUB menu
-#uncomment following two lines if you don't want to show GRUB menu
+#(Optional)Display GRUB menu 
+#uncomment the following two lines if you don't want to show GRUB menu
 #sudo sed -i -e 's/GRUB_HIDDEN_TIMEOUT/#GRUB_HIDDEN_TIMEOUT/' /etc/default/grub
 #sudo update-grub
 
