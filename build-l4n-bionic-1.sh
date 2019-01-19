@@ -7,6 +7,7 @@
 #Kiyotaka Nemoto 16-Jan-2019
 
 #ChangeLog
+#19-Jan-2019 remove light-locker since system got unstable
 #16-Jan-2019 add manpages-ja for the Japanese setting
 #14-Jan-2019 add python3-tk
 #11-Jan-2019 add light-locker
@@ -123,7 +124,7 @@ sudo apt-get -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 	xfce4-power-manager-plugins lightdm lightdm-gtk-greeter 	\
 	shimmer-themes network-manager-gnome xinit build-essential 	\
 	dkms thunar-archive-plugin file-roller gawk fonts-noto 		\
-	xdg-utils light-locker
+	xdg-utils 
 
 #Installation of misc packages
 echo "Installation of misc packages"
