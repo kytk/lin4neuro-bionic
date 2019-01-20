@@ -4,9 +4,10 @@
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#Kiyotaka Nemoto 16-Jan-2019
+#Kiyotaka Nemoto 20-Jan-2019
 
 #ChangeLog
+#20-Jan-2019 add pillow and alias for xdg-open
 #19-Jan-2019 remove light-locker since system got unstable
 #16-Jan-2019 add manpages-ja for the Japanese setting
 #14-Jan-2019 add python3-tk
@@ -143,7 +144,7 @@ sudo apt-get -y install build-essential pkg-config 		\
 sudo apt-get -y install python3-venv python3-pip python3-dev    \
         python3-tk	
 sudo -H pip3 install cmake numpy scipy matplotlib pyyaml h5py   \
-	pydot-ng opencv-python keras jupyter
+	pydot-ng opencv-python keras jupyter pillow
 sudo -H pip3 install --upgrade tensorflow
 
 #Install the latest kernel
@@ -257,6 +258,12 @@ sudo apt-get -y autoremove
 #uncomment the following two lines if you don't want to show GRUB menu
 #sudo sed -i -e 's/GRUB_HIDDEN_TIMEOUT/#GRUB_HIDDEN_TIMEOUT/' /etc/default/grub
 #sudo update-grub
+
+#alias
+echo "" >> ~/.bashrc
+echo "#alias for xdg-open" >> ~/.bashrc
+echo "alias open='xdg-open &>/dev/null'" >> ~/.bashrc
+echo "" >> ~/.bashrc
 
 #VirtualBox guest related settings
 if [ $vbinstall -eq 1 ]; then
