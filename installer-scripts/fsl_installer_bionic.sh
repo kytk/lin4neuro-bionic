@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cp ~/git/lin4neuro-bionic/lin4neuro-parts/local/share/applications/fsl*.desktop ~/.local/share/applications
+sed -i 's/NoDisplay=true/NoDisplay=false/' ~/.local/share/applications/fsl-wiki.desktop
 
 fslinstalled=$(which fsl)
 if [ -z "$fslinstalled" ]; then
@@ -30,10 +31,12 @@ else
 	[Yy]*)
 		cp $FSLDIR/etc/fslinstaller.py .
 		python2 fslinstaller.py -c
+		sleep 5
 		break
 		;;
 	[Nn]*)
 		echo -e "FSL will not be updated.\n"
+		sleep 5
 		exit
   		;;
 	*)
@@ -42,9 +45,6 @@ else
   esac
 
 fi
-
-sed -i 's/NoDisplay=true/NoDisplay=false/' ~/.local/share/applications/fsl-wiki.desktop
-sed -i 's/NoDisplay=false/NoDisplay=true/' ~/.local/share/applications/fslview.desktop
 
 exit
 

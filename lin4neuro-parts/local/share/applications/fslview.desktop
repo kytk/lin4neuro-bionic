@@ -11,3 +11,5 @@ Comment=This program is part of FSL
 Comment[de]=Dieses Programm gehört zu FSL
 Categories=Neuroimaging;
 Icon=fsl-5.0.xpm
+NoDisplay=true
+
