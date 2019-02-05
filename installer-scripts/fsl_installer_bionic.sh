@@ -44,6 +44,7 @@ else
 fi
 
 sed -i 's/NoDisplay=true/NoDisplay=false/' ~/.local/share/applications/fsl-wiki.desktop
+sed -i 's/NoDisplay=false/NoDisplay=true/' ~/.local/share/applications/fslview.desktop
 
 exit
 
