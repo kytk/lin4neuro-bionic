@@ -1,7 +1,7 @@
-#Remastersys Global Configuration File
+#PinguyBuilder Global Configuration File
 
 # This is the temporary working directory and won't be included on the cd/dvd
-WORKDIR="/home/remastersys"
+WORKDIR="/home/PinguyBuilder"
 
 # Here you can add any other files or directories to be excluded from the live filesystem
 # Separate each entry with a space
