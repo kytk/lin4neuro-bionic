@@ -1,30 +1,26 @@
 #!/bin/bash
 #Lin4Neuro making script part 4
-#Remastersys
+#PinguyBuilder
 
 #ChangeLog
-#07-Jan-2017: Modify for L4N-16.04
-#26-Jan-2016: Comment downloading remastersys
-#17-Jan-2016: Merge Japanese and English version.
-#28-Nov-2015: Update version of remastersys
+#15 Feb 2019: Change from remastersys to PinguyBuilder
 
 #Setting of path of the setting scripts
 currentdir=`echo $(cd $(dirname $0) && pwd)`
 base_path=$currentdir/lin4neuro-parts
 
-#Installation of required packages for Remastersys
-sudo apt-get -y install isolinux casper genisoimage squashfs-tools \
-     syslinux-utils
+#Installation of PinguyBuilder
+cd ${base_path}/PinguyBuilder
+sudo apt install ./pinguybuilder_5.1-8_all.deb
 
-#Installation of Remastersys
-sudo cp -r ${base_path}/remastersys/etc/* /etc
-sudo cp ${base_path}/remastersys/remastersys /usr/bin
-sudo chmod 755 /usr/bin/remastersys
+#replace splash.png
+sudo cp ./etc/splash.png /etc/PinguyBuilder/isolinux
 
+#copy config file based on locale
 if [ `echo $LANG` = ja_JP.UTF-8 ]; then
-    sudo mv /etc/remastersys.conf.ja /etc/remastersys.conf
+    sudo cp ./etc/PinguyBuilder.conf.ja /etc/PinguyBuilder.conf
 else
-    sudo mv /etc/remastersys.conf.en /etc/remastersys.conf
+    sudo cp ./etc/PinguyBuilder.conf.en /etc/PinguyBuilder.conf
 fi
 
 #usb-creator
