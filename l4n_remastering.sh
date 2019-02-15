@@ -1,6 +1,6 @@
 #!/bin/bash
-#Remastering with Remastersys for Lin4Neuro 18.04
-#09-Sep-2018 K. Nemoto
+#Remastering with PinguyBuilder for Lin4Neuro 18.04
+#15-Feb-2019 K. Nemoto
 
 #Execute as a normal user!
 
@@ -11,7 +11,7 @@ if [ "$(whoami)" = "root" ]; then
 fi
 
 #Log
-log=`date +%Y%m%d%H%M%S`-remastersys.log
+log=`date +%Y%m%d%H%M%S`-remastering.log
 exec &> >(tee -a "$log")
 
 #Setting of path of the setting scripts
@@ -56,7 +56,7 @@ sudo rsync -rp --delete --progress ~/Desktop /etc/skel/
 sudo rsync -rp --delete --progress ~/bin /etc/skel/
 sudo rsync -rp --delete --progress ~/tutorial /etc/skel/
 sudo mkdir /etc/skel/git
-sudo rsync -rp --delete --progress ~/git/lin4neuro-xenial /etc/skel/git/
+sudo rsync -rp --delete --progress ~/git/lin4neuro-bionic /etc/skel/git/
 
 #Check if Document direcotry exists in /etc/skel
 cd /etc/skel
@@ -79,23 +79,23 @@ sudo sed -i 's/Exec=sh/Exec=sudo sh/' /usr/share/applications/ubiquity.desktop
 #Remove unnecessary files
 sudo apt-get -y autoremove
 
-#Remastering with Remastersys
+#Remastering 
 while true; do
 
 	echo "Ready for remastering."
-	echo "Do you want to proceed remastering with Remastersys (yes/no)?"
+	echo "Do you want to proceed remastering (yes/no)?"
 
 	read answer
 
 	case $answer in
 		[Yy]*)
 			sudo wajig hold neurodebian-popularity-contest
-			sudo remastersys clean
-			sudo remastersys dist
+			sudo PinguyBuilder clean
+			sudo PinguyBuilder dist
 			break
 			;;
 		[Nn]*)
-			echo -e "Run Remastersys manually later.\n"
+			echo -e "Run PinguyBuilder manually later.\n"
 			exit
 			;;
 		*)
