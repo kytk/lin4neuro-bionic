@@ -4,9 +4,10 @@
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#Kiyotaka Nemoto 20-Jan-2019
+#Kiyotaka Nemoto 09-Mar-2019
 
 #ChangeLog
+#09-Mar-2019 minor fix
 #20-Jan-2019 add pillow and alias for xdg-open
 #19-Jan-2019 remove light-locker since system got unstable
 #16-Jan-2019 add manpages-ja for the Japanese setting
@@ -40,14 +41,14 @@
 LANG=C
 sudo apt-get update; sudo apt-get -y upgrade
 
-log=`date +%Y%m%d%H%M%S`-part1.log
+log=$(date +%Y%m%d%H%M%S)-part1.log
 exec &> >(tee -a "$log")
 
 echo "Begin making Lin4Neuro."
 echo "Do you want to install virtualbox-guest? (Yes/No)"
 select vbguest in "Yes" "No" "quit"
 do
-  if [ $REPLY = "q" ] ; then
+  if [ "$REPLY" = "q" ] ; then
     echo "quit."
     exit 0
   fi
@@ -70,7 +71,7 @@ done
 echo "Which language do you want to build? (English/Japanese)"
 select lang in "English" "Japanese" "quit"
 do
-  if [ $REPLY = "q" ] ; then
+  if [ "$REPLY" = "q" ] ; then
      echo "quit."
      exit 0
   fi
@@ -144,8 +145,11 @@ sudo apt-get -y install build-essential pkg-config 		\
 sudo apt-get -y install python3-venv python3-pip python3-dev    \
         python3-tk	
 sudo -H pip3 install cmake numpy scipy matplotlib pyyaml h5py   \
-	pydot-ng opencv-python keras jupyter pillow
+	pydot-ng opencv-python keras jupyter pillow python-dateutil
 sudo -H pip3 install --upgrade tensorflow
+
+#Installation of Spyder3
+sudo -H pip3 install PyQtWebEngine spyder
 
 #Install the latest kernel
 sudo apt-get -y install linux-image-generic
@@ -165,7 +169,7 @@ if [ $lang == "English" ] ; then
   echo "Installation of libreoffice"
   sudo apt-get -y install libreoffice libreoffice-help-en
 
-else
+elif [ $lang == "Japanese" ] ; then
   #Japanese-dependent environment
   echo "Installation of firefox and Japanese-related packages"
   sudo apt-get -y install fcitx fcitx-mozc fcitx-config-gtk 	\
@@ -185,7 +189,8 @@ sudo apt-get -y purge xscreensaver
 #Installation of Lin4Neuro related settings
 
 #Setting of path of the setting scripts
-currentdir=`echo $(cd $(dirname $0) && pwd)`
+#currentdir=`echo $(cd $(dirname $0) && pwd)`
+currentdir=$(cd $(dirname "$0") && pwd)
 base_path=$currentdir/lin4neuro-parts
 
 #Install plymouth-related files
@@ -193,7 +198,7 @@ sudo apt-get -y install plymouth-themes plymouth-label
 
 #Installation of lin4neuro-logo
 echo "Installation of lin4neuro-logo"
-sudo cp -r ${base_path}/lin4neuro-logo /usr/share/plymouth/themes
+sudo cp -r "${base_path}"/lin4neuro-logo /usr/share/plymouth/themes
 sudo update-alternatives --install 					\
 	/usr/share/plymouth/themes/default.plymouth 			\
 	default.plymouth 						\
@@ -204,26 +209,26 @@ sudo update-initramfs -u -k all
 #Installation of icons
 echo "Installation of icons"
 mkdir -p ~/.local/share
-cp -r ${base_path}/local/share/icons ~/.local/share/
+cp -r "${base_path}"/local/share/icons ~/.local/share/
 
 #Installation of customized menu
 echo "Installation of customized menu"
 mkdir -p ~/.config/menus
-cp ${base_path}/config/menus/xfce-applications.menu \
+cp "${base_path}"/config/menus/xfce-applications.menu \
 	~/.config/menus
 
 #Installation of .desktop files
 echo "Installation of .desktop files"
-cp -r ${base_path}/local/share/applications ~/.local/share/
+cp -r "${base_path}"/local/share/applications ~/.local/share/
 
 #Installation of Neuroimaging.directory
 echo "Installation of Neuroimaging.directory"
 mkdir -p ~/.local/share/desktop-directories
-cp ${base_path}/local/share/desktop-directories/Neuroimaging.directory ~/.local/share/desktop-directories
+cp "${base_path}"/local/share/desktop-directories/Neuroimaging.directory ~/.local/share/desktop-directories
 
 #Copy background image
 echo "Copy background image"
-sudo cp ${base_path}/backgrounds/deep_ocean.png /usr/share/backgrounds
+sudo cp "${base_path}"/backgrounds/deep_ocean.png /usr/share/backgrounds
 
 #Remove an unnecessary image file
 sudo rm /usr/share/backgrounds/xfce/xfce-teal.jpg
@@ -231,18 +236,18 @@ sudo rm /usr/share/backgrounds/xfce/xfce-teal.jpg
 #Copy modified lightdm-gtk-greeter.conf
 echo "Copy modified 01_ubuntu.conf"
 sudo mkdir -p /usr/share/lightdm/lightdm-gtk-greeter.conf.d
-sudo cp ${base_path}/lightdm/lightdm-gtk-greeter.conf.d/01_ubuntu.conf /usr/share/lightdm/lightdm-gtk-greeter.conf.d
+sudo cp "${base_path}"/lightdm/lightdm-gtk-greeter.conf.d/01_ubuntu.conf /usr/share/lightdm/lightdm-gtk-greeter.conf.d
 
 #Settings for auto-login
 echo "Settings for auto-login"
 sudo mkdir -p /usr/share/lightdm/lightdm.conf.d
-sudo cp ${base_path}/lightdm/lightdm.conf.d/10-ubuntu.conf \
+sudo cp "${base_path}"/lightdm/lightdm.conf.d/10-ubuntu.conf \
 	/usr/share/lightdm/lightdm.conf.d
 
 #Cusotmize of panel, dsktop, and theme
 echo "Cusotmize of panel, dsktop, and theme"
 
-cp -r ${base_path}/config/xfce4 ~/.config
+cp -r "${base_path}"/config/xfce4 ~/.config
 
 #Clean packages
 sudo apt-get -y autoremove
@@ -260,10 +265,17 @@ sudo apt-get -y autoremove
 #sudo update-grub
 
 #alias
-echo "" >> ~/.bashrc
-echo "#alias for xdg-open" >> ~/.bashrc
-echo "alias open='xdg-open &>/dev/null'" >> ~/.bashrc
-echo "" >> ~/.bashrc
+cat << EOS >> ~/.bashrc
+
+#alias for xdg-open
+alias open='xdg-open &> /dev/null'
+
+EOS
+
+#echo "" >> ~/.bashrc
+#echo "#alias for xdg-open" >> ~/.bashrc
+#echo "alias open='xdg-open &>/dev/null'" >> ~/.bashrc
+#echo "" >> ~/.bashrc
 
 #VirtualBox guest related settings
 if [ $vbinstall -eq 1 ]; then
@@ -272,7 +284,7 @@ if [ $vbinstall -eq 1 ]; then
 
     echo "Install virtualbox guest"
     sudo apt-get install -y virtualbox-guest-dkms virtualbox-guest-x11
-    sudo usermod -aG vboxsf $(whoami)
+    sudo usermod -aG vboxsf '$(whoami)'
 
     #fstab
     echo '' | sudo tee -a /etc/fstab
