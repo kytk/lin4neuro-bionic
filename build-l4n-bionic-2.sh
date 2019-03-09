@@ -187,23 +187,18 @@ fi
 echo "Install MRIcroGL"
 cd $HOME/Downloads
 
-if [ ! -e 'mricrogl_linux.zip' ]; then
-  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/mricrogl_linux.zip
+if [ ! -e 'MRIcroGL12_linux.zip' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/MRIcroGL12_linux.zip
 fi
 
 cd /usr/local
-sudo unzip ~/Downloads/mricrogl_linux.zip
-sudo mv mricrogl_lx mricrogl
-cd mricrogl
-sudo find -type f -exec chmod 644 {} \;
-sudo find -type d -exec chmod 755 {} \;
-sudo chmod 755 MRIcroGL dcm2niix
+sudo unzip ~/Downloads/MRIcroGL12_linux.zip
 
 grep mricrogl ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then
     echo '' >> ~/.bashrc
     echo '#MRIcroGL' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/mricrogl' >> ~/.bashrc
+    echo 'export PATH=$PATH:/usr/local/MRIcroGL12' >> ~/.bashrc
 fi
 
 #tutorial
@@ -220,8 +215,8 @@ unzip ~/Downloads/tutorial.zip
 #Remove MacOS hidden files
 find $HOME -name '__MACOSX' -exec rm -rf {} \;
 find $HOME -name '.DS_Store' -exec rm -rf {} \;
-sudo find /usr/local -name '__MACOSX' -exec sudo rm -rf {} \;
-sudo find /usr/local -name '.DS_Store' -exec sudo rm -rf {} \;
+#sudo find /usr/local -name '__MACOSX' -exec sudo rm -rf {} \;
+#sudo find /usr/local -name '.DS_Store' -exec sudo rm -rf {} \;
 
 #packages to be installed by users (with installer)
 #ANTs
