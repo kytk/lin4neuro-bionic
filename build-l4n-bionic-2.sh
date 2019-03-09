@@ -67,11 +67,11 @@ sudo unzip ~/Downloads/vmri.zip
 echo "Install Aliza"
 cd $HOME/Downloads
 
-if [ ! -e 'aliza_1.43.4.6.deb' ]; then
-  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/aliza_1.43.4.6.deb
+if [ ! -e 'aliza_1.48.8.8.deb' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/aliza_1.48.8.8.deb
 fi
 
-sudo apt install -y ./aliza_1.43.4.6.deb
+sudo apt install -y ./aliza_1.48.8.8.deb
 
 #DSIStudio
 echo "Install DSI Studio"
