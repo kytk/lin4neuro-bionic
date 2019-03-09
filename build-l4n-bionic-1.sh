@@ -146,7 +146,7 @@ sudo apt-get -y install python3-venv python3-pip python3-dev    \
         python3-tk	
 sudo -H pip3 install cmake numpy scipy matplotlib pyyaml h5py   \
 	pydot-ng opencv-python keras jupyter pillow python-dateutil
-sudo -H pip3 install --upgrade tensorflow
+sudo -H pip3 install tensorflow
 
 #Installation of Spyder3
 sudo -H pip3 install PyQtWebEngine spyder
