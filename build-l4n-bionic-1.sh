@@ -4,9 +4,10 @@
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#Kiyotaka Nemoto 09-Mar-2019
+#Kiyotaka Nemoto 10-Mar-2019
 
 #ChangeLog
+#10-Mar-2019 replace some parts with here document
 #09-Mar-2019 minor fix
 #20-Jan-2019 add pillow and alias for xdg-open
 #19-Jan-2019 remove light-locker since system got unstable
@@ -252,13 +253,6 @@ cp -r "${base_path}"/config/xfce4 ~/.config
 #Clean packages
 sudo apt-get -y autoremove
 
-#GRUB setting for plymouth (obsolete)
-#echo '' | sudo tee -a /etc/default/grub
-#echo '#GRUB setting for plymouth' | sudo tee -a /etc/default/grub
-#echo 'GRUB_GFXPAYLOAD_LINUX="auto"' | sudo tee -a /etc/default/grub 
-#sudo sh -c 'echo 'FRAMEBUFFER=y' > /etc/initramfs-tools/conf.d/splash'
-#sudo update-grub
-
 #(Optional)Display GRUB menu 
 #uncomment the following two lines if you don't want to show GRUB menu
 #sudo sed -i -e 's/GRUB_HIDDEN_TIMEOUT/#GRUB_HIDDEN_TIMEOUT/' /etc/default/grub
@@ -271,11 +265,6 @@ cat << EOS >> ~/.bashrc
 alias open='xdg-open &> /dev/null'
 
 EOS
-
-#echo "" >> ~/.bashrc
-#echo "#alias for xdg-open" >> ~/.bashrc
-#echo "alias open='xdg-open &>/dev/null'" >> ~/.bashrc
-#echo "" >> ~/.bashrc
 
 #VirtualBox guest related settings
 if [ $vbinstall -eq 1 ]; then

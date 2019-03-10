@@ -29,8 +29,8 @@ if [ $fcount != 0 ]; then
     rm -rf *
 fi
 
-echo "bleachbit"
-sudo bleachbit -c --preset
+#echo "bleachbit"
+#sudo bleachbit -c --preset
 
 echo "zeropad the unused space"
 sudo dd if=/dev/zero of=zero bs=4k; sudo \rm zero

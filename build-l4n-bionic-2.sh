@@ -2,9 +2,10 @@
 #Lin4Neuro making script part 2
 #Installation of Neuroimaging software packages
 #Prerequisite: You need to finish the build-l4n-bionic-1.sh.
-#Kiyotaka Nemoto 01-Jan-2019
+#Kiyotaka Nemoto 10-Mar-2019
 
 #Changelog
+#10-Mar-2019 Sophisticate variables
 #01-Jan-2019 Clean up the script
 #14-Sep-2018 Move virtualbox guest related settings to Part 1
 #18-Aug-2018 Change R to the official repository (to keep consisitency with AFNI)
@@ -15,7 +16,7 @@
 #07-Apr-2018 add symbolic link to installer
 
 #Log
-log=`date +%Y%m%d%H%M%S`-part2.log
+log=$(date +%Y%m%d%H%M%S)-part2.log
 exec &> >(tee -a "$log")
 
 #Signature for Neurodebian
@@ -27,10 +28,10 @@ sudo apt-get update
 sudo apt-get -y dist-upgrade
 
 #Setting of path of the setting scripts
-currentdir=`echo $(cd $(dirname $0) && pwd)`
+currentdir=$(cd $(dirname $0) && pwd)
 base_path=$currentdir/lin4neuro-parts
 
-#R
+#R (for Ver. 3.5)
 #sudo apt-key adv --keyserver keyserver.ubuntu.com \
 #     --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 #
@@ -42,6 +43,8 @@ base_path=$currentdir/lin4neuro-parts
 #  'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
 #fi
 #sudo apt-get -y update
+
+#R
 sudo apt-get install -y r-base
 
 #DCMTK
@@ -54,7 +57,7 @@ sudo apt-get install -y mriconvert
 
 #VirtualMRI
 echo "Install Virtual MRI"
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
 if [ ! -e 'vmri.zip' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/vmri.zip
@@ -65,7 +68,7 @@ sudo unzip ~/Downloads/vmri.zip
 
 #Aliza
 echo "Install Aliza"
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
 if [ ! -e 'aliza_1.48.8.8.deb' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/aliza_1.48.8.8.deb
@@ -78,7 +81,7 @@ echo "Install DSI Studio"
 sudo apt-get install -y \
   libboost-thread1.65.1 libboost-program-options1.65.1 qt5-default
 
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
 if [ ! -e 'dsistudio1804.zip' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/dsistudio1804.zip
@@ -89,7 +92,7 @@ sudo unzip ~/Downloads/dsistudio1804.zip
 
 #ROBEX
 echo "Install ROBEX"
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
 if [ ! -e 'ROBEXv12.linux64.tar.gz' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/ROBEXv12.linux64.tar.gz
@@ -111,9 +114,9 @@ fi
 
 #c3d
 echo "Install c3d"
-cp -r ${base_path}/bin $HOME
+cp -r "${base_path}"/bin "$HOME"
 
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
 if [ ! -e 'c3d-1.0.0-Linux-x86_64.tar.gz' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/c3d-1.0.0-Linux-x86_64.tar.gz
@@ -133,7 +136,7 @@ fi
 
 #itksnap
 echo "Install ITK-SNAP"
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
 if [ ! -e 'itksnap-3.6.0-20170401-Linux-x86_64.tar.gz' ]; then
   curl -O  http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/itksnap-3.6.0-20170401-Linux-x86_64.tar.gz
@@ -152,7 +155,7 @@ fi
 
 #Mango
 echo "Install Mango"
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
 if [ ! -e 'mango_unix.zip' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/mango_unix.zip
@@ -163,7 +166,7 @@ sudo unzip ~/Downloads/mango_unix.zip
 
 #MRIcron
 echo "Install MRIcron"
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
 if [ ! -e 'lx.zip' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/lx.zip
@@ -185,7 +188,7 @@ fi
 
 #MRIcroGL
 echo "Install MRIcroGL"
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
 if [ ! -e 'MRIcroGL12_linux.zip' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/MRIcroGL12_linux.zip
@@ -203,18 +206,18 @@ fi
 
 #tutorial
 echo "Install tutorial by Chris Rorden"
-cd $HOME/Downloads
+cd "$HOME"/Downloads
 
 if [ ! -e 'tutorial.zip' ]; then
   curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/tutorial.zip
 fi
 
-cd $HOME
+cd "$HOME"
 unzip ~/Downloads/tutorial.zip
 
 #Remove MacOS hidden files
-find $HOME -name '__MACOSX' -exec rm -rf {} \;
-find $HOME -name '.DS_Store' -exec rm -rf {} \;
+find "$HOME" -name '__MACOSX' -exec rm -rf {} \;
+find "$HOME" -name '.DS_Store' -exec rm -rf {} \;
 #sudo find /usr/local -name '__MACOSX' -exec sudo rm -rf {} \;
 #sudo find /usr/local -name '.DS_Store' -exec sudo rm -rf {} \;
 

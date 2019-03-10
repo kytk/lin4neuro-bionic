@@ -2,7 +2,7 @@
 
 #Part3: Check if software is installed.
 
-log=`date +%Y%m%d%H%M%S`-part3.log
+log=$(date +%Y%m%d%H%M%S)-part3.log
 exec &> >(tee -a "$log")
 
 
