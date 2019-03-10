@@ -4,9 +4,10 @@
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#Kiyotaka Nemoto 10-Mar-2019
+#Kiyotaka Nemoto 11-Mar-2019
 
 #ChangeLog
+#11-Mar-2019 change python libraries as a moudle to be installed
 #10-Mar-2019 replace some parts with here document
 #09-Mar-2019 minor fix
 #20-Jan-2019 add pillow and alias for xdg-open
@@ -140,17 +141,6 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	wajig xfce4-screenshooter zip ntp tcsh baobab xterm     \
         bleachbit libopenblas-base cups apturl dmz-cursor-theme
 
-#Installation of python libraries for machine learning
-sudo apt-get -y install build-essential pkg-config 		\
-	libopenblas-dev	liblapack-dev libhdf5-serial-dev graphviz 
-sudo apt-get -y install python3-venv python3-pip python3-dev    \
-        python3-tk	
-sudo -H pip3 install cmake numpy scipy matplotlib pyyaml h5py   \
-	pydot-ng opencv-python keras jupyter pillow python-dateutil
-sudo -H pip3 install tensorflow
-
-#Installation of Spyder3
-sudo -H pip3 install PyQtWebEngine spyder
 
 #Install the latest kernel
 sudo apt-get -y install linux-image-generic
