@@ -23,14 +23,20 @@ if [ ! -e /etc/skel/.local ]; then
 	sudo mkdir -p /etc/skel/.local/share/desktop-directories
 fi
 
+#ubiquity
+sudo apt-get -y install ubiquity-frontend-gtk
+
+#Clean up systems
+bash cleanup_system.sh
+
 #Remove old kernels
-sudo apt-get -y autoremove --purge
+#sudo apt-get -y autoremove --purge
 
 #Remove apt cache
-sudo apt-get -y clean
+#sudo apt-get -y clean
 
 #Remove unnecessary kernels
-sudo purge-old-kernels --keep 1
+#sudo purge-old-kernels --keep 1
 
 #Remove linux-headers
 #sudo apt-get -y remove linux-headers-$(uname -a | awk '{ print $3 }')
@@ -64,9 +70,6 @@ if [ ! -e /etc/skel/Documents ]; then
         sudo mkdir Desktop Documents Downloads Music Pictures Public \
 		   Templates Videos
 fi
-
-#ubiquity
-sudo apt-get -y install ubiquity-frontend-gtk
 
 #remove 40cdrom from ubiquity
 #if [ -e /usr/lib/ubiquity/apt-setup/generators/40cdrom ]; then
