@@ -153,8 +153,6 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
         bleachbit libopenblas-base cups apturl dmz-cursor-theme
 
 
-#Install the latest kernel
-sudo apt-get -y install linux-image-generic
 
 #Workaround for system-config-samba
 sudo touch /etc/libuser.conf
@@ -191,7 +189,6 @@ sudo apt-get -y purge xscreensaver
 #Installation of Lin4Neuro related settings
 
 #Setting of path of the setting scripts
-#currentdir=`echo $(cd $(dirname $0) && pwd)`
 currentdir=$(cd $(dirname "$0") && pwd)
 base_path=$currentdir/lin4neuro-parts
 

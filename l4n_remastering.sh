@@ -1,6 +1,6 @@
 #!/bin/bash
 #Remastering with PinguyBuilder for Lin4Neuro 18.04
-#15-Feb-2019 K. Nemoto
+#12-Mar-2019 K. Nemoto
 
 #Execute as a normal user!
 
@@ -11,7 +11,7 @@ if [ "$(whoami)" = "root" ]; then
 fi
 
 #Log
-log=`date +%Y%m%d%H%M%S`-remastering.log
+log=$(date +%Y%m%d%H%M%S)-remastering.log
 exec &> >(tee -a "$log")
 
 #Setting of path of the setting scripts
