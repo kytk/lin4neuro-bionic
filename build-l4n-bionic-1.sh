@@ -130,6 +130,13 @@ sudo apt-get -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 	dkms thunar-archive-plugin file-roller gawk fonts-noto 		\
 	xdg-utils 
 
+#Installation of python-related packages
+sudo apt-get -y install build-essential pkg-config              \
+        libopenblas-dev liblapack-dev libhdf5-serial-dev graphviz 
+sudo apt-get -y install python3-venv python3-pip python3-dev    \
+        python3-tk      
+
+
 #Installation of misc packages
 echo "Installation of misc packages"
 
