@@ -7,6 +7,7 @@
 #Kiyotaka Nemoto 11-Mar-2019
 
 #ChangeLog
+#11-Mar-2019 Remove VirtualBox guest
 #11-Mar-2019 change python libraries as a moudle to be installed
 #10-Mar-2019 replace some parts with here document
 #09-Mar-2019 minor fix
@@ -112,6 +113,9 @@ do
      exit 0
   fi
 done
+
+#Install linux-{image,headers}-generic-hwe-18.04
+sudo apt-get -y install linux-{image,headers}-generic-hwe-18.04
 
 #Signature for neurodebian
 sudo apt-key add neuro.debian.net.asc
@@ -265,11 +269,11 @@ EOS
 
 #VirtualBox guest related settings
 if [ $vbinstall -eq 1 ]; then
-    echo "Install the kernel header"
-    sudo apt-get -y install linux-headers-$(uname -a | awk '{ print $3 }')
+#    echo "Install the kernel header"
+#    sudo apt-get -y install linux-headers-$(uname -a | awk '{ print $3 }')
 
     echo "Install virtualbox guest"
-    sudo apt-get install -y virtualbox-guest-dkms virtualbox-guest-x11
+#    sudo apt-get install -y virtualbox-guest-dkms virtualbox-guest-x11
     sudo usermod -aG vboxsf '$(whoami)'
 
     #fstab
