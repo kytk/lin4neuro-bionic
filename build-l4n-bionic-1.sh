@@ -7,6 +7,7 @@
 #Kiyotaka Nemoto 11-Mar-2019
 
 #ChangeLog
+#26-Apr-2019 Add 10-globally-managed-devices.conf
 #11-Mar-2019 Remove VirtualBox guest
 #11-Mar-2019 change python libraries as a moudle to be installed
 #10-Mar-2019 replace some parts with here document
@@ -156,6 +157,9 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 
 #Workaround for system-config-samba
 sudo touch /etc/libuser.conf
+
+#Workaround for networking devices
+sudo touch /etc/NetworkManager/conf.d/10-globally-managed-devices.conf
 
 #vim settings
 cp /usr/share/vim/vimrc ~/.vimrc
