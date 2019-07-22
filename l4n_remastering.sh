@@ -55,6 +55,7 @@ sudo rsync -rp --delete --progress ~/.config/Thunar /etc/skel/.config/
 sudo rsync -rp --delete --progress ~/.local/share/applications /etc/skel/.local/share/
 sudo rsync -rp --delete --progress ~/.local/share/desktop-directories /etc/skel/.local/share/
 sudo rsync -rp --delete --progress ~/.bashrc /etc/skel/
+sudo rsync -rp --delete --progress ~/.profile /etc/skel/
 sudo rsync -rp --delete --progress ~/.local/share/icons /etc/skel/.local/share/
 
 #Copy neuroimaging-related files to /etc/skel
