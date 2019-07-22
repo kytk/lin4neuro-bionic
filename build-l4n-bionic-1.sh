@@ -4,9 +4,10 @@
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#Kiyotaka Nemoto 11-Mar-2019
+#Kiyotaka Nemoto 22-Jul-2019
 
 #ChangeLog
+#22-Jul-2019 GRUB customization to show GRUB on boot
 #26-Apr-2019 Add 10-globally-managed-devices.conf
 #11-Mar-2019 Remove VirtualBox guest
 #11-Mar-2019 change python libraries as a moudle to be installed
@@ -29,7 +30,7 @@
 #10-Aug-2018 add ntp
 #13-Jul-2018 assume that installation of mini.iso is under English locale.
 #15-Apr-2018 move update LibreOffice and VirtualBox related settings to part2
-#15-Apr-2018 change to use the latest kernel (hwe-16.04-edge)
+#15-Apr-2018 change to use the latest kernel (hwe-18.04)
 #07-Apr-2018 add linux-headers
 #07-Apr-2018 add lines to /etc/fstab related to virtualbox shared folder
 #30-Mar-2018 simplify customization of xfce
@@ -136,8 +137,8 @@ sudo apt-get -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 	xdg-utils 
 
 #Installation of python-related packages
-sudo apt-get -y install build-essential pkg-config              \
-        libopenblas-dev liblapack-dev libhdf5-serial-dev graphviz 
+sudo apt-get -y install pkg-config libopenblas-dev liblapack-dev \
+	libhdf5-serial-dev graphviz 
 sudo apt-get -y install python3-venv python3-pip python3-dev    \
         python3-tk      
 
@@ -152,7 +153,6 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	system-config-samba tree unzip update-manager vim 	\
 	wajig xfce4-screenshooter zip ntp tcsh baobab xterm     \
         bleachbit libopenblas-base cups apturl dmz-cursor-theme
-
 
 
 #Workaround for system-config-samba
@@ -249,16 +249,15 @@ sudo cp "${base_path}"/lightdm/lightdm.conf.d/10-ubuntu.conf \
 
 #Cusotmize of panel, dsktop, and theme
 echo "Cusotmize of panel, dsktop, and theme"
-
 cp -r "${base_path}"/config/xfce4 ~/.config
 
 #Clean packages
 sudo apt-get -y autoremove
 
-#(Optional)Display GRUB menu 
-#uncomment the following two lines if you don't want to show GRUB menu
-#sudo sed -i -e 's/GRUB_HIDDEN_TIMEOUT/#GRUB_HIDDEN_TIMEOUT/' /etc/default/grub
-#sudo update-grub
+#GRUB customization to show GRUB on boot
+sudo sed -i -e 's/GRUB_TIMEOUT_STYLE/#GRUB_TIMEOUT_STYLE/' /etc/default/grub
+sudo sed -i -e 's/GRUB_TIMEOUT=0/GRUB_TIMEOUT=10/' /etc/default/grub
+sudo update-grub
 
 #alias
 cat << EOS >> ~/.bashrc
@@ -272,8 +271,7 @@ EOS
 if [ $vbinstall -eq 1 ]; then
 #    echo "Install the kernel header"
 #    sudo apt-get -y install linux-headers-$(uname -a | awk '{ print $3 }')
-
-    echo "Install virtualbox guest"
+    echo "Add user to vboxsf"
 #    sudo apt-get install -y virtualbox-guest-dkms virtualbox-guest-x11
     sudo usermod -aG vboxsf '$(whoami)'
 
