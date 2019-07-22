@@ -11,7 +11,7 @@ base_path=$currentdir/lin4neuro-parts
 
 #Installation of PinguyBuilder
 cd ${base_path}/PinguyBuilder
-sudo apt install ./pinguybuilder_5.1-8_all.deb
+sudo apt install ./pinguybuilder_5.2-1_all.deb
 
 #replace splash.png
 sudo cp ./etc/splash.png /etc/PinguyBuilder/isolinux
