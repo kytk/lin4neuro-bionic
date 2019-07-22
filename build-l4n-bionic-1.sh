@@ -269,11 +269,10 @@ EOS
 
 #VirtualBox guest related settings
 if [ $vbinstall -eq 1 ]; then
-#    echo "Install the kernel header"
-#    sudo apt-get -y install linux-headers-$(uname -a | awk '{ print $3 }')
     echo "Add user to vboxsf"
-#    sudo apt-get install -y virtualbox-guest-dkms virtualbox-guest-x11
+#(obsolete) sudo apt-get install -y virtualbox-guest-dkms virtualbox-guest-x11
     sudo usermod -aG vboxsf '$(whoami)'
+    echo "Please install VirtualBox Guest after Reboot"
 
     #fstab
     echo '' | sudo tee -a /etc/fstab
