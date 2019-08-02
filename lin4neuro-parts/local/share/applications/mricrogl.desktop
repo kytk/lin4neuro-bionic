@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=MRIcroGL
-Exec=/usr/local/MRIcroGL12/MRIcroGL
+Exec=/usr/local/MRIcroGL/MRIcroGL
 Icon=mricrogl.svg
 Terminal=false
 Categories=Neuroimaging;
