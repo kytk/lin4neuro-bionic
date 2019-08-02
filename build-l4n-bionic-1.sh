@@ -4,9 +4,10 @@
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#Kiyotaka Nemoto 22-Jul-2019
+#Kiyotaka Nemoto 02-Aug-2019
 
 #ChangeLog
+#02-Aug-2019 Add chntpw
 #22-Jul-2019 GRUB customization to show GRUB on boot
 #26-Apr-2019 Add 10-globally-managed-devices.conf
 #11-Mar-2019 Remove VirtualBox guest
@@ -152,8 +153,8 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	imagemagick nemo ntp system-config-printer-gnome 	\
 	system-config-samba tree unzip update-manager vim 	\
 	wajig xfce4-screenshooter zip ntp tcsh baobab xterm     \
-        bleachbit libopenblas-base cups apturl dmz-cursor-theme
-
+        bleachbit libopenblas-base cups apturl dmz-cursor-theme \
+	chntpw
 
 #Workaround for system-config-samba
 sudo touch /etc/libuser.conf
