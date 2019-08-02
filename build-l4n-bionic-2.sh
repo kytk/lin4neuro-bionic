@@ -2,9 +2,10 @@
 #Lin4Neuro making script part 2
 #Installation of Neuroimaging software packages
 #Prerequisite: You need to finish the build-l4n-bionic-1.sh.
-#Kiyotaka Nemoto 10-Mar-2019
+#Kiyotaka Nemoto 02-Aug-2019
 
 #Changelog
+#02-Aug-2019 Update Aliza, MRIcroGL, dcm2niix, ITK-snap, Mango
 #10-Mar-2019 Sophisticate variables
 #01-Jan-2019 Clean up the script
 #14-Sep-2018 Move virtualbox guest related settings to Part 1
@@ -70,11 +71,11 @@ sudo unzip ~/Downloads/vmri.zip
 echo "Install Aliza"
 cd "$HOME"/Downloads
 
-if [ ! -e 'aliza_1.48.8.8.deb' ]; then
-  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/aliza_1.48.8.8.deb
+if [ ! -e 'aliza_1.48.20.2.deb' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/aliza_1.48.20.2.deb
 fi
 
-sudo apt install -y ./aliza_1.48.8.8.deb
+sudo apt install -y ./aliza_1.48.20.2.deb
 
 #DSIStudio
 echo "Install DSI Studio"
@@ -138,13 +139,13 @@ fi
 echo "Install ITK-SNAP"
 cd "$HOME"/Downloads
 
-if [ ! -e 'itksnap-3.6.0-20170401-Linux-x86_64.tar.gz' ]; then
-  curl -O  http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/itksnap-3.6.0-20170401-Linux-x86_64.tar.gz
+if [ ! -e 'itksnap-3.8.0-20190612-Linux-x86_64.tar.gz' ]; then
+  curl -O  http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/itksnap-3.8.0-20190612-Linux-x86_64.tar.gz
 fi
 
 cd /usr/local
-sudo tar xvzf ~/Downloads/itksnap-3.6.0-20170401-Linux-x86_64.tar.gz
-sudo mv itksnap-3.6.0-20170401-Linux-x86_64 itksnap
+sudo tar xvzf ~/Downloads/itksnap-3.8.0-20190612-Linux-x86_64.tar.gz
+sudo mv itksnap-3.8.0-20190612-Linux-x86_64 itksnap
 
 grep itksnap ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then
@@ -190,18 +191,18 @@ fi
 echo "Install MRIcroGL"
 cd "$HOME"/Downloads
 
-if [ ! -e 'MRIcroGL12_linux.zip' ]; then
-  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/MRIcroGL12_linux.zip
+if [ ! -e 'MRIcroGL_linux.zip' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/MRIcroGL_linux.zip
 fi
 
 cd /usr/local
-sudo unzip ~/Downloads/MRIcroGL12_linux.zip
+sudo unzip ~/Downloads/MRIcroGL_linux.zip
 
 grep mricrogl ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then
     echo '' >> ~/.bashrc
     echo '#MRIcroGL' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/MRIcroGL12' >> ~/.bashrc
+    echo 'export PATH=$PATH:/usr/local/MRIcroGL' >> ~/.bashrc
 fi
 
 #tutorial
