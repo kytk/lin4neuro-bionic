@@ -145,7 +145,13 @@ fi
 
 cd /usr/local
 sudo tar xvzf ~/Downloads/itksnap-3.8.0-20190612-Linux-x86_64.tar.gz
-sudo mv itksnap-3.8.0-20190612-Linux-x86_64 itksnap
+sudo mv itksnap-3.8.0-20190612-Linux-gcc_64 itksnap
+
+# install libpng12
+echo "install libpng12"
+cd $HOME/Downloads
+curl -O http://security.ubuntu.com/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1.1_amd64.deb
+sudo apt install -y ./libpng12-0_1.2.54-1ubuntu1.1_amd64.deb
 
 grep itksnap ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then
