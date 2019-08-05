@@ -43,6 +43,9 @@ echo "Run MRIcroGL"
 MRIcroGL &
 wait
 
+#dcm2niix
+echo "Run dcm2niix"
+dcm2niix
 
 #MRIcron
 echo "Run MRIcroN"
