@@ -2,9 +2,10 @@
 #Lin4Neuro making script part 2
 #Installation of Neuroimaging software packages
 #Prerequisite: You need to finish the build-l4n-bionic-1.sh.
-#Kiyotaka Nemoto 02-Aug-2019
+#Kiyotaka Nemoto 05-Aug-2019
 
 #Changelog
+#05-Aug-2019 Add octave
 #02-Aug-2019 Update Aliza, MRIcroGL, dcm2niix, ITK-snap, Mango
 #10-Mar-2019 Sophisticate variables
 #01-Jan-2019 Clean up the script
@@ -28,6 +29,7 @@ sudo add-apt-repository -y ppa:libreoffice/ppa
 sudo apt-get update
 sudo apt-get -y dist-upgrade
 
+
 #Setting of path of the setting scripts
 currentdir=$(cd $(dirname $0) && pwd)
 base_path=$currentdir/lin4neuro-parts
@@ -44,6 +46,9 @@ base_path=$currentdir/lin4neuro-parts
 #  'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
 #fi
 #sudo apt-get -y update
+
+#Octave
+sudo apt-get install -y octave
 
 #R
 sudo apt-get install -y r-base
