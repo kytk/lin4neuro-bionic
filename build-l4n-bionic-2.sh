@@ -150,7 +150,7 @@ fi
 
 cd /usr/local
 sudo tar xvzf ~/Downloads/itksnap-3.8.0-20190612-Linux-x86_64.tar.gz
-sudo mv itksnap-3.8.0-20190612-Linux-gcc_64 itksnap
+sudo mv itksnap-3.8.0-20190612-Linux-gcc64 itksnap
 
 # install libpng12
 echo "install libpng12"
