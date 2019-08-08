@@ -7,7 +7,7 @@ if [ ! -d /usr/local/MATLAB/MCR/v92 ]; then
   ~/git/lin4neuro-bionic/installer-scripts/mcr_v92_installer_bionic.sh
 fi
 
-#Download SPM12 standalone
+#Download CONN17f standalone
 echo "Download CONN17f standalone"
 cd $HOME/Downloads
 
