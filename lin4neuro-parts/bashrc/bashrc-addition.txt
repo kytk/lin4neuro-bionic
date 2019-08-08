@@ -22,7 +22,8 @@ export PATH=$PATH:$ANTSPATH
 export PATH=$PATH:/usr/local/itksnap/bin
 
 #mricroGL
-export PATH=$PATH:/usr/local/mricrogl
+export PATH=$PATH:/usr/local/MRIcroGL
+export PATH=$PATH:/usr/local/MRIcroGL/Resources
 
 #mricron
 export PATH=$PATH:/usr/local/mricron
