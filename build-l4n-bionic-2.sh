@@ -214,6 +214,7 @@ if [ $? -eq 1 ]; then
     echo '' >> ~/.bashrc
     echo '#MRIcroGL' >> ~/.bashrc
     echo 'export PATH=$PATH:/usr/local/MRIcroGL' >> ~/.bashrc
+    echo 'export PATH=$PATH:/usr/local/MRIcroGL/Resources' >> ~/.bashrc
 fi
 
 #tutorial
