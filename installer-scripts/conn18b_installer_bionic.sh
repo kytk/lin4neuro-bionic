@@ -20,7 +20,7 @@ sudo mkdir conn18b_standalone
 cd conn18b_standalone
 sudo unzip ~/Downloads/conn18b_glnxa64.zip
 
-sed -i 's/NoDisplay=true/NoDisplay=false/' ~/.local/share/applications/conn.desktop
+sed -i 's/NoDisplay=true/NoDisplay=false/' ~/.local/share/applications/conn18b.desktop
 
 #alias
 echo '' >> ~/.bashrc

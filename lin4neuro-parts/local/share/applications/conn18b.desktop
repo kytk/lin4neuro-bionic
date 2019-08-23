@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=CONN
+Exec=bash -c '/usr/local/conn18b_standalone/run_conn.sh /usr/local/MATLAB/MCR/v95'
+Icon=conn.png
+Type=Application
+Terminal=false
+Categories=Neuroimaging;
+NoDisplay=true
+
