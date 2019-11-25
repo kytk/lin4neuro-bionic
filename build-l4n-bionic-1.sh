@@ -118,7 +118,8 @@ do
 done
 
 #Install linux-{image,headers}-generic-hwe-18.04
-sudo apt-get -y install linux-{image,headers}-generic-hwe-18.04
+#Disabled because of installer problems as of 25 Nov 2019
+#sudo apt-get -y install linux-{image,headers}-generic-hwe-18.04
 
 #Signature for neurodebian
 sudo apt-key add neuro.debian.net.asc
