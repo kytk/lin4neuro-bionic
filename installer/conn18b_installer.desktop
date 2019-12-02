@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Install CONN18.b Standalone
+Name[ja]=CONN 18.a スタンドアロン版のインストール
+Exec=sh -c "~/git/lin4neuro-bionic/installer-scripts/conn18b_installer_bionic.sh"
+Icon=conn
+#Categories=Neuroimaging;
+StartupNotify=true
+Terminal=true
+
