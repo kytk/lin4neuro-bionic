@@ -7,6 +7,8 @@
 #Kiyotaka Nemoto 02-Aug-2019
 
 #ChangeLog
+#25-Nov-2019 Add boot-repair
+#25-Nov-2019 Stop using hwe kernel due to the problem with PinguyBuilder
 #02-Aug-2019 Add chntpw
 #22-Jul-2019 GRUB customization to show GRUB on boot
 #26-Apr-2019 Add 10-globally-managed-devices.conf
@@ -118,7 +120,8 @@ do
 done
 
 #Install linux-{image,headers}-generic-hwe-18.04
-sudo apt-get -y install linux-{image,headers}-generic-hwe-18.04
+#Disabled because of installer problems as of 25 Nov 2019
+#sudo apt-get -y install linux-{image,headers}-generic-hwe-18.04
 
 #Signature for neurodebian
 sudo apt-key add neuro.debian.net.asc
@@ -259,6 +262,10 @@ sudo apt-get -y autoremove
 sudo sed -i -e 's/GRUB_TIMEOUT_STYLE/#GRUB_TIMEOUT_STYLE/' /etc/default/grub
 sudo sed -i -e 's/GRUB_TIMEOUT=0/GRUB_TIMEOUT=10/' /etc/default/grub
 sudo update-grub
+
+#Boot repair
+sudo add-apt-repository -y ppa:yannubuntu/boot-repair
+sudo apt-get install -y boot-repair
 
 #alias
 cat << EOS >> ~/.bashrc

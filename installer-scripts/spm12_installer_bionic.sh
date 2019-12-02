@@ -23,7 +23,7 @@ sed -i 's/NoDisplay=true/NoDisplay=false/' ~/.local/share/applications/spm.deskt
 #alias 
 echo '' >> ~/.bashrc
 echo '#SPM12 standalone' >> ~/.bashrc
-echo "alias spm='/usr/local/spm12_standalone/run_spm12.sh /usr/local/MATLAB/MCR/v92'" >> ~/.bashrc
+echo "alias spm='/usr/local/spm12_standalone/run_spm12.sh /usr/local/MATLAB/MCR/v95'" >> ~/.bashrc
 
 echo "Initialize SPM12 standalone"
 echo "Press Quit when SPM12 is up"
