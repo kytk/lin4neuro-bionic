@@ -134,7 +134,7 @@ fi
 if [ $reconallvb -eq 1 ]; then
   sudo sed -i 's/ln -s \$hemi/cp \$hemi/' /usr/local/freesurfer/bin/recon-all
   sudo sed -i 's/ln -s \$FREESURFER_HOME\/subjects\/fsaverage/cp -r \$FREESURFER_HOME\/subjects\/fsaverage \$SUBJECTS_DIR/' /usr/local/freesurfer/bin/recon-all
-  sudo sed -i 's/ln -s \$FREESURFER_HOME\/subjects\/\$\{hemi\}.EC_average/cp -r \$FREESURFER_HOME\/subjects\/\$\{hemi\}.EC_average \$SUBJECTS_DIR/' /usr/local/freesurfer/bin/recon-all
+  sudo sed -i 's/ln -s \$FREESURFER_HOME\/subjects\/\${hemi}.EC_average/cp -r \$FREESURFER_HOME\/subjects\/\${hemi}.EC_average \$SUBJECTS_DIR/' /usr/local/freesurfer/bin/recon-all
   sudo sed -i 's/ln -sfn/cp/' /usr/local/freesurfer/bin/trac-preproc
   sudo sed -i 's/ln -sf/cp/' /usr/local/freesurfer/bin/trac-preproc
   sudo sed -i 's/ln -s/cp/' /usr/local/freesurfer/bin/trac-preproc
