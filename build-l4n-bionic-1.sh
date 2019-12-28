@@ -7,6 +7,7 @@
 #Kiyotaka Nemoto 02-Aug-2019
 
 #ChangeLog
+#28-Dec-2019 Add gddrescue
 #25-Nov-2019 Add boot-repair
 #25-Nov-2019 Stop using hwe kernel due to the problem with PinguyBuilder
 #02-Aug-2019 Add chntpw
@@ -157,7 +158,7 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	system-config-samba tree unzip update-manager vim 	\
 	wajig xfce4-screenshooter zip ntp tcsh baobab xterm     \
         bleachbit libopenblas-base cups apturl dmz-cursor-theme \
-	chntpw
+	chntpw gddrescue
 
 #Workaround for system-config-samba
 sudo touch /etc/libuser.conf
