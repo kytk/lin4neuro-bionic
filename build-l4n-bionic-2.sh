@@ -5,6 +5,7 @@
 #Kiyotaka Nemoto 05-Aug-2019
 
 #Changelog
+#15-Dec-2019 change the default shell from dash to bash
 #05-Aug-2019 Add octave
 #02-Aug-2019 Update Aliza, MRIcroGL, dcm2niix, ITK-snap, Mango
 #10-Mar-2019 Sophisticate variables
@@ -251,6 +252,9 @@ fi
 
 EOS
 
+# change symbolic link of /bin/sh from dash to bash
+echo "dash dash/sh boolean false" | sudo debconf-set-selections
+sudo dpkg-reconfigure --frontend=noninteractive dash
 
 echo "Finished!"
 

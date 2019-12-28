@@ -130,8 +130,19 @@ else
     echo 'source $FREESURFER_HOME/SetUpFreeSurfer.sh' >> $HOME/.bashrc
 fi
 
-# replace 'ln -s' with 'cp' for virtualbox environment
-sudo sed -i 's/ln -s \$hemi/cp \$hemi/' /usr/local/freesurfer/bin/recon-all
+# replace 'ln -s' with 'cp' in recon-all, trac-preproc, gcaprepone, and make_average_{subject,surface,volume} for virtualbox environment
+if [ $reconallvb -eq 1 ]; then
+  sudo sed -i 's/ln -s \$hemi/cp \$hemi/' /usr/local/freesurfer/bin/recon-all
+  sudo sed -i 's/ln -s \$FREESURFER_HOME\/subjects\/fsaverage/cp -r \$FREESURFER_HOME\/subjects\/fsaverage \$SUBJECTS_DIR/' /usr/local/freesurfer/bin/recon-all
+  sudo sed -i 's/ln -s \$FREESURFER_HOME\/subjects\/\${hemi}.EC_average/cp -r \$FREESURFER_HOME\/subjects\/\${hemi}.EC_average \$SUBJECTS_DIR/' /usr/local/freesurfer/bin/recon-all
+  sudo sed -i 's/ln -sfn/cp/' /usr/local/freesurfer/bin/trac-preproc
+  sudo sed -i 's/ln -sf/cp/' /usr/local/freesurfer/bin/trac-preproc
+  sudo sed -i 's/ln -s/cp/' /usr/local/freesurfer/bin/trac-preproc
+  sudo sed -i 's/ln -s/cp/' /usr/local/freesurfer/bin/gcaprepone
+  sudo sed -i 's/ln -s/cp/' /usr/local/freesurfer/bin/make_average_subject
+  sudo sed -i 's/ln -s/cp/' /usr/local/freesurfer/bin/make_average_surface
+  sudo sed -i 's/ln -s/cp/' /usr/local/freesurfer/bin/make_average_volume
+fi
 
 echo "Installation finished!"
 echo "Now close this terminal, open another terminal, and run fs_check_6.0.sh"
