@@ -5,6 +5,7 @@
 #Kiyotaka Nemoto 05-Aug-2019
 
 #Changelog
+#11-Feb-2020 Update Aliza
 #15-Dec-2019 change the default shell from dash to bash
 #05-Aug-2019 Add octave
 #02-Aug-2019 Update Aliza, MRIcroGL, dcm2niix, ITK-snap, Mango
@@ -77,11 +78,11 @@ sudo unzip ~/Downloads/vmri.zip
 echo "Install Aliza"
 cd "$HOME"/Downloads
 
-if [ ! -e 'aliza_1.48.20.2.deb' ]; then
-  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/aliza_1.48.20.2.deb
+if [ ! -e 'aliza_1.98.12.1.deb' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/aliza_1.98.12.1.deb
 fi
 
-sudo apt install -y ./aliza_1.48.20.2.deb
+sudo apt install -y ./aliza_1.98.12.1.deb
 
 #DSIStudio
 echo "Install DSI Studio"
