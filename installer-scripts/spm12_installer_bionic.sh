@@ -17,6 +17,8 @@ fi
 
 cd /usr/local
 sudo unzip ~/Downloads/spm12_standalone.zip
+cd spm12_standalone
+sudo chmod 755 run_spm12.sh spm12
 
 sed -i 's/NoDisplay=true/NoDisplay=false/' ~/.local/share/applications/spm.desktop
 
