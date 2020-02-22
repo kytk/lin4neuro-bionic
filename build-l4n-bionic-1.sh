@@ -4,9 +4,10 @@
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#Kiyotaka Nemoto 02-Aug-2019
+#22-Feb-2020 K. Nemoto
 
 #ChangeLog
+#22-Feb-2020 drop nemo and add rename
 #28-Dec-2019 Add gddrescue
 #25-Nov-2019 Add boot-repair
 #25-Nov-2019 Stop using hwe kernel due to the problem with PinguyBuilder
@@ -154,7 +155,7 @@ echo "Installation of misc packages"
 sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	default-jre evince exfat-fuse exfat-utils gedit 	\
 	gnome-system-monitor gnome-system-tools gparted		\
-	imagemagick nemo ntp system-config-printer-gnome 	\
+	imagemagick rename ntp system-config-printer-gnome 	\
 	system-config-samba tree unzip update-manager vim 	\
 	wajig xfce4-screenshooter zip ntp tcsh baobab xterm     \
         bleachbit libopenblas-base cups apturl dmz-cursor-theme \
