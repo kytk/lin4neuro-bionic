@@ -11,17 +11,17 @@ if [ -z "$fslinstalled" ]; then
   fslpyexist=$(find ~/ -name fslinstaller.py)
 
   if [ -z "$fslpyexist" ]; then
-    echo "Please download fslinstaller.py first"
-    echo "Please run the script after you installed fslinstaller.py"
-    sleep 5
+    echo "Download fslinstaller.py"
+    curl -O https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py
+    echo "Please register before using FSL"
     xdg-open "https://fsl.fmrib.ox.ac.uk/fsldownloads_registration" 
-    exit
 
   else
     echo "found fslinstaller.py"
     cp $fslpyexist .
-    python2 fslinstaller.py
   fi
+
+python2 fslinstaller.py
 
 else
   echo "FSL is already installed."
