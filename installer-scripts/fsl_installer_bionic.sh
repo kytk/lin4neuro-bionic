@@ -3,6 +3,8 @@
 cp ~/git/lin4neuro-bionic/lin4neuro-parts/local/share/applications/fsl*.desktop ~/.local/share/applications
 sed -i 's/NoDisplay=true/NoDisplay=false/' ~/.local/share/applications/fsl-wiki.desktop
 
+cd $HOME
+
 fslinstalled=$(which fsl)
 if [ -z "$fslinstalled" ]; then
   echo "FSL is not installed yet."
