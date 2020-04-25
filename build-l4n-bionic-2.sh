@@ -5,6 +5,8 @@
 #Kiyotaka Nemoto 05-Aug-2019
 
 #Changelog
+#25-Apr-2020 Update Alize to 1.98.17.1
+#25-Apr-2020 Change R repositoby back to r-project.org
 #11-Feb-2020 Update Aliza
 #15-Dec-2019 change the default shell from dash to bash
 #05-Aug-2019 Add octave
@@ -36,18 +38,18 @@ sudo apt-get -y dist-upgrade
 currentdir=$(cd $(dirname $0) && pwd)
 base_path=$currentdir/lin4neuro-parts
 
-#R (for Ver. 3.5)
-#sudo apt-key adv --keyserver keyserver.ubuntu.com \
-#     --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-#
-#echo "Install R using cran.rstudio.com repository"
-#
-#grep rstudio /etc/apt/sources.list > /dev/null
-#if [ $? -eq 1 ]; then
-#  sudo add-apt-repository \
-#  'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
-#fi
-#sudo apt-get -y update
+#R (cloud.r-project.org)
+sudo apt-key adv --keyserver keyserver.ubuntu.com \
+     --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+
+echo "Install R using cran.rstudio.com repository"
+
+grep rstudio /etc/apt/sources.list > /dev/null
+if [ $? -eq 1 ]; then
+  sudo add-apt-repository \
+  'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
+fi
+sudo apt-get -y update
 
 #Octave
 sudo apt-get install -y octave
@@ -78,11 +80,11 @@ sudo unzip ~/Downloads/vmri.zip
 echo "Install Aliza"
 cd "$HOME"/Downloads
 
-if [ ! -e 'aliza_1.98.12.1.deb' ]; then
-  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/aliza_1.98.12.1.deb
+if [ ! -e 'aliza_1.98.17.1.deb' ]; then
+  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/aliza_1.98.17.1.deb
 fi
 
-sudo apt install -y ./aliza_1.98.12.1.deb
+sudo apt install -y ./aliza_1.98.17.1.deb
 
 #DSIStudio
 echo "Install DSI Studio"
@@ -211,7 +213,7 @@ fi
 cd /usr/local
 sudo unzip ~/Downloads/MRIcroGL_linux.zip
 
-grep mricrogl ~/.bashrc > /dev/null
+grep MRIcroGL ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then
     echo '' >> ~/.bashrc
     echo '#MRIcroGL' >> ~/.bashrc
