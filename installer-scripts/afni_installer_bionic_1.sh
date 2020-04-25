@@ -35,9 +35,14 @@ sudo tcsh @update.afni.binaries -curl -package linux_ubuntu_16_64 -bindir /usr/l
 cd $HOME
 
 #.bashrc
-echo ' ' >> ~/.bashrc
-echo '#AFNI' >> ~/.bashrc
-echo 'export PATH=$PATH:/usr/local/AFNIbin' >> ~/.bashrc
+grep AFNI ~/.bashrc > /dev/null
+if [ $? -eq 1 ]; then
+    echo ' ' >> ~/.bashrc
+    echo '#AFNI' >> ~/.bashrc
+    echo 'export PATH=$PATH:/usr/local/AFNIbin' >> ~/.bashrc
+fi
+
+source ~/.bashrc
 
 #Make AFNI/SUMA profiles
 cp /usr/local/AFNIbin/AFNI.afnirc $HOME/.afnirc
@@ -46,14 +51,13 @@ suma -update_env
 #Install help
 apsearch -update_all_afni_help
 
-cat << EOS >> ~/.bashrc
-
-ahdir=`apsearch -afni_help_dir`
-if [ -f "$ahdir/all_progs.COMP.bash" ]
-then
-   . $ahdir/all_progs.COMP.bash
+grep ahdir ~/.bashrc > /dev/null
+if [ $? -eq 1 ]; then
+  echo 'ahdir=$(apsearch -afni_help_dir)' > ~/.bashrc
+  echo 'if [ -f "$ahdir/all_progs.COMP.bash" ]; then' > ~/.bashrc
+  echo '  . $ahdir/all_progs.COMP.bash' > ~/.bashrc
+  echo 'fi' > ~/.bashrc
 fi
-EOS
 
 #make icon show in the neuroimaging directory
 sed -i 's/NoDisplay=true/NoDisplay=false/' ~/.local/share/applications/afni.desktop
