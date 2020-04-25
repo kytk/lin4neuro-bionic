@@ -206,9 +206,7 @@ fi
 echo "Install MRIcroGL"
 cd "$HOME"/Downloads
 
-if [ ! -e 'MRIcroGL_linux.zip' ]; then
-  curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/MRIcroGL_linux.zip
-fi
+curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/MRIcroGL_linux.zip
 
 cd /usr/local
 sudo unzip ~/Downloads/MRIcroGL_linux.zip
