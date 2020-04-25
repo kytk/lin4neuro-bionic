@@ -53,10 +53,10 @@ apsearch -update_all_afni_help
 
 grep ahdir ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then
-  echo 'ahdir=$(apsearch -afni_help_dir)' > ~/.bashrc
-  echo 'if [ -f "$ahdir/all_progs.COMP.bash" ]; then' > ~/.bashrc
-  echo '  . $ahdir/all_progs.COMP.bash' > ~/.bashrc
-  echo 'fi' > ~/.bashrc
+  echo 'ahdir=$(apsearch -afni_help_dir)' >> ~/.bashrc
+  echo 'if [ -f "$ahdir/all_progs.COMP.bash" ]; then' >> ~/.bashrc
+  echo '  . $ahdir/all_progs.COMP.bash' >> ~/.bashrc
+  echo 'fi' >> ~/.bashrc
 fi
 
 #make icon show in the neuroimaging directory
