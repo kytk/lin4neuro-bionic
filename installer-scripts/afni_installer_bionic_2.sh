@@ -33,6 +33,9 @@ sudo apt-get install -y r-base-dev r-cran-rmpi
 #Install rPkgs
 rPkgsInstall -pkgs ALL
 
+#Install matplotlib (python2)
+sudo apt-get install -y python-matplotlib
+
 #Evaluate setup
 cd $HOME
 echo "Check installation"
