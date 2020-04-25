@@ -46,10 +46,6 @@ source ~/.bashrc
 
 #Make AFNI/SUMA profiles
 cp /usr/local/AFNIbin/AFNI.afnirc $HOME/.afnirc
-suma -update_env
-
-#Install help
-apsearch -update_all_afni_help
 
 grep ahdir ~/.bashrc > /dev/null
 if [ $? -eq 1 ]; then

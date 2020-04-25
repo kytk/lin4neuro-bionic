@@ -9,6 +9,12 @@
 
 cd $HOME
 
+#SUMA setup
+suma -update_env
+
+#Install help
+apsearch -update_all_afni_help
+
 #Setup R
 export R_LIBS=$HOME/R
 
