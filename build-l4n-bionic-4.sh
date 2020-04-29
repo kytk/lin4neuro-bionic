@@ -29,6 +29,9 @@ else
     sudo cp ./etc/PinguyBuilder.conf.en /etc/PinguyBuilder.conf
 fi
 
+#replace lsb_release.py
+sudo cp ${base_path}/pyshared/lsb_release.py /usr/share/pyshared/
+
 #usb-creator
 sudo apt-get -y install usb-creator-common usb-creator-gtk
 
