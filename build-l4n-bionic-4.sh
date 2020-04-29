@@ -16,6 +16,7 @@ sudo apt install ./pinguybuilder_5.2-1_all.deb
 
 #replace splash.png
 sudo chmod 755 /etc/PinguyBuilder
+sudo chmod 755 /etc/PinguyBuilder/{gdm3,icons,isolinux,mdm,plymouth,preseed,scripts}
 sudo cp ./etc/splash.png /etc/PinguyBuilder/isolinux
 
 # Unlink grub
