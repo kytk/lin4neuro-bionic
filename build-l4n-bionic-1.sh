@@ -126,6 +126,7 @@ done
 #sudo apt-get -y install linux-{image,headers}-generic-hwe-18.04
 
 #Signature for neurodebian
+sudo apt-get install -y gnupg
 sudo apt-key add neuro.debian.net.asc
 #Alternative way 1
 #sudo apt-key adv --recv-keys --keyserver \
