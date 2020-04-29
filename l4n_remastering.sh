@@ -78,6 +78,9 @@ fi
 #fi
 
 #modify ubiquity.desktop
+if [ ! -e /usr/share/applications/ubiquity.desktop ]; then
+  sudo cp ./lin4neuro-parts/ubiquity.desktop /usr/share/applications
+fi
 sudo sed -i 's/Exec=sh/Exec=sudo sh/' /usr/share/applications/ubiquity.desktop
 
 #Remove unnecessary files
