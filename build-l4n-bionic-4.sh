@@ -3,6 +3,7 @@
 #PinguyBuilder
 
 #ChangeLog
+#29 Apr 2020: Minor custom for Pinguybuilder
 #15 Feb 2019: Change from remastersys to PinguyBuilder
 
 #Setting of path of the setting scripts
@@ -14,7 +15,11 @@ cd ${base_path}/PinguyBuilder
 sudo apt install ./pinguybuilder_5.2-1_all.deb
 
 #replace splash.png
+sudo chmod 755 /etc/PinguyBuilder
 sudo cp ./etc/splash.png /etc/PinguyBuilder/isolinux
+
+# Unlink grub
+sudo unlink /usr/share/images/desktop-base/desktop-grub.png
 
 #copy config file based on locale
 if [ `echo $LANG` = ja_JP.UTF-8 ]; then
