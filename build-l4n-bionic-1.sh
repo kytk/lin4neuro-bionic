@@ -4,9 +4,10 @@
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
 #Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#22-Feb-2020 K. Nemoto
+#04-May-2020 K. Nemoto
 
 #ChangeLog
+#04-May-2020 drop VirtualBox settings and 7z
 #22-Feb-2020 drop nemo and add rename
 #28-Dec-2019 Add gddrescue
 #25-Nov-2019 Add boot-repair
@@ -55,28 +56,6 @@ log=$(date +%Y%m%d%H%M%S)-part1.log
 exec &> >(tee -a "$log")
 
 echo "Begin making Lin4Neuro."
-echo "Do you want to install virtualbox-guest? (Yes/No)"
-select vbguest in "Yes" "No" "quit"
-do
-  if [ "$REPLY" = "q" ] ; then
-    echo "quit."
-    exit 0
-  fi
-  if [ -z "$vbguest" ] ; then
-    continue
-  elif [ $vbguest == "Yes" ] ; then
-    echo "VirtualBox guest will be installed later."
-    vbinstall=1
-    break
-  elif [ $vbguest == "No" ] ; then
-    echo "VirtualBox guest will not be installed."
-    vbinstall=0
-    break
-  elif [ $vbguest == "quit" ] ; then
-    echo "quit."
-    exit 0
-  fi
-done
 
 echo "Which language do you want to build? (English/Japanese)"
 select lang in "English" "Japanese" "quit"
@@ -160,7 +139,7 @@ sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
 	system-config-samba tree unzip update-manager vim 	\
 	wajig xfce4-screenshooter zip ntp tcsh baobab xterm     \
         bleachbit libopenblas-base cups apturl dmz-cursor-theme \
-	chntpw gddrescue
+	chntpw gddrescue p7zip-full
 
 #Workaround for system-config-samba
 sudo touch /etc/libuser.conf
@@ -278,18 +257,6 @@ alias open='xdg-open &> /dev/null'
 
 EOS
 
-#VirtualBox guest related settings
-if [ $vbinstall -eq 1 ]; then
-    echo "Add user to vboxsf"
-#(obsolete) sudo apt-get install -y virtualbox-guest-dkms virtualbox-guest-x11
-    sudo usermod -aG vboxsf '$(whoami)'
-    echo "Please install VirtualBox Guest after Reboot"
-
-    #fstab
-    echo '' | sudo tee -a /etc/fstab
-    echo '#Virtualbox shared folder' | sudo tee -a /etc/fstab
-    echo 'share /media/sf_share vboxsf _netdev,uid=1000,gid=1000 0 0' | sudo tee -a /etc/fstab
-fi
 
 echo "Finished! The system will reboot in 10 seconds."
 echo "Please run build-l4n-bionic-2.sh to install neuroimaging packages."
