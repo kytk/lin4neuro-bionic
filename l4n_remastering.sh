@@ -24,10 +24,10 @@ if [ ! -e /etc/skel/.local ]; then
 fi
 
 #ubiquity
-sudo apt-get -y install ubiquity ubiquity-frontend-gtk --reinstall
+#sudo apt-get -y install ubiquity ubiquity-frontend-gtk --reinstall
 
 #Clean up systems
-bash cleanup_system.sh
+#bash cleanup_system.sh
 
 #Remove old kernels
 #sudo apt-get -y autoremove --purge
@@ -73,9 +73,9 @@ if [ ! -e /etc/skel/Documents ]; then
 fi
 
 #remove 40cdrom from ubiquity
-#if [ -e /usr/lib/ubiquity/apt-setup/generators/40cdrom ]; then
-#	sudo rm /usr/lib/ubiquity/apt-setup/generators/40cdrom
-#fi
+if [ -e /usr/lib/ubiquity/apt-setup/generators/40cdrom ]; then
+	sudo rm /usr/lib/ubiquity/apt-setup/generators/40cdrom
+fi
 
 #modify ubiquity.desktop
 #if [ ! -e /usr/share/applications/ubiquity.desktop ]; then
@@ -110,9 +110,6 @@ while true; do
 			;;
 	esac
 done
-
-#Reinstall virtualbox-guest-dkms
-#sudo apt-get -y install virtualbox-guest-dkms
 
 echo "Finished!"
 sleep 5

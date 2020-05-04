@@ -7,7 +7,7 @@ WORKDIR="/home/PinguyBuilder"
 # Here you can add any other files or directories to be excluded from the live filesystem
 # Separate each entry with a space
 #EXCLUDES="/usr/src"
-EXCLUDES="/media/sf_share"
+EXCLUDES="/media/sf_share /opt/VBox*"
 
 # Here you can change the livecd/dvd username
 LIVEUSER="custom"
