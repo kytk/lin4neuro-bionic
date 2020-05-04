@@ -3,6 +3,7 @@
 #PinguyBuilder
 
 #ChangeLog
+#04 May 2020: Rollback PinguyBuilder from 5.2-1 to 5.1-8
 #29 Apr 2020: Minor custom for Pinguybuilder
 #15 Feb 2019: Change from remastersys to PinguyBuilder
 
@@ -12,7 +13,7 @@ base_path=$currentdir/lin4neuro-parts
 
 #Installation of PinguyBuilder
 cd ${base_path}/PinguyBuilder
-sudo apt install ./pinguybuilder_5.2-1_all.deb
+sudo apt install ./pinguybuilder_5.1-8_all.deb
 
 #replace splash.png
 sudo chmod 755 /etc/PinguyBuilder
