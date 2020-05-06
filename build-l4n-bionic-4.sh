@@ -3,7 +3,7 @@
 #PinguyBuilder
 
 #ChangeLog
-#04 May 2020: Rollback PinguyBuilder from 5.2-1 to 5.1-8
+#06 May 2020: Change the settings of PinguyBuilder
 #29 Apr 2020: Minor custom for Pinguybuilder
 #15 Feb 2019: Change from remastersys to PinguyBuilder
 
@@ -17,14 +17,27 @@ sudo apt install ./pinguybuilder_5.1-8_all.deb
 
 #replace splash.png
 sudo chmod 755 /etc/PinguyBuilder
-sudo chmod 755 /etc/PinguyBuilder/{gdm3,icons,isolinux,mdm,plymouth,preseed,scripts}
+sudo find /etc/PinguyBuilder -type d -exec chmod 755 {} \;
+
 sudo chmod 755 /usr/share/PinguyBuilder-gtk
-sudo chmod 755 /usr/share/PinguyBuilder-gtk/{pixmaps,ui}
+sudo find /usr/share/PinguyBuilder-gtk -type d -exec chmod 755 {} \;
+
+sudo chmod 755 /usr/share/doc/{PinguyBuilder,PinguyBuilder-gtk}
+
+sudo chmod 755 /usr/lib/PinguyBuilder
+sudo find /usr/lib/PinguyBuilder -type d -exec chmod 755 {} \;
+
+sudo chmod 755 /usr/lib/python2.7/dist-packages/PinguyBuilder*
+
+sudo chmod 755 /etc/PinguyBuilder
+sudo find /etc/PinguyBuilder -type d -exec chmod 755 {} \;
 
 sudo cp ./etc/splash.png /etc/PinguyBuilder/isolinux
 
 # Unlink grub
-sudo unlink /usr/share/images/desktop-base/desktop-grub.png
+if [ -e /usr/share/images/desktop-base/desktop-grub.png ]; then
+  sudo unlink /usr/share/images/desktop-base/desktop-grub.png
+fi
 
 #copy config file based on locale
 if [ `echo $LANG` = ja_JP.UTF-8 ]; then
