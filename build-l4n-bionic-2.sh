@@ -2,9 +2,10 @@
 #Lin4Neuro making script part 2
 #Installation of Neuroimaging software packages
 #Prerequisite: You need to finish the build-l4n-bionic-1.sh.
-#Kiyotaka Nemoto 05-Aug-2019
+#Kiyotaka Nemoto 09-May-2020
 
 #Changelog
+#09-May-2020 Add xdg-user-dirs-update
 #25-Apr-2020 Update Alize to 1.98.17.1
 #25-Apr-2020 Change R repositoby back to r-project.org
 #11-Feb-2020 Update Aliza
@@ -24,6 +25,12 @@
 #Log
 log=$(date +%Y%m%d%H%M%S)-part2.log
 exec &> >(tee -a "$log")
+
+#Settings for Japanese
+if [ $LANG == "ja_JP.UTF-8" ]; then
+  LANG=C xdg-user-dirs-update --force
+  im-config -n fcitx
+fi
 
 #Signature for Neurodebian
 sudo apt-key add neuro.debian.net.asc
