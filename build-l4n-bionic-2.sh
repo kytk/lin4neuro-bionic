@@ -26,24 +26,29 @@
 log=$(date +%Y%m%d%H%M%S)-part2.log
 exec &> >(tee -a "$log")
 
+
 #Settings for Japanese
 if [ $LANG == "ja_JP.UTF-8" ]; then
   LANG=C xdg-user-dirs-update --force
+  cd $HOME
+  rm -rf ダウンロード テンプレート デスクトップ ドキュメント ビデオ ピクチャ ミュージック 公開
   im-config -n fcitx
 fi
 
+#Setting of path of the setting scripts
+currentdir=$(cd $(dirname $0) && pwd)
+base_path=$currentdir/lin4neuro-parts
+
+echo "Install neuroimaging-related software packages"
+
 #Signature for Neurodebian
-sudo apt-key add neuro.debian.net.asc
+sudo apt-key add ${currentdir}/neuro.debian.net.asc
 
 #Libreoffice
 sudo add-apt-repository -y ppa:libreoffice/ppa
 sudo apt-get update
 sudo apt-get -y dist-upgrade
 
-
-#Setting of path of the setting scripts
-currentdir=$(cd $(dirname $0) && pwd)
-base_path=$currentdir/lin4neuro-parts
 
 #Octave
 sudo apt-get install -y octave

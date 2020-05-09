@@ -138,9 +138,6 @@ cp -r "${base_path}"/config/xfce4 /etc/skel/.config
 mkdir /etc/skel/git
 cp -r ../lin4neuro-bionic /etc/skel/git/
 
-#post-installation script
-cp "${base_Path}"/etc/profile.d/l4n_postsetup.sh /etc/profile.d/
-
 #Clean packages
 apt-get -y autoremove
 
@@ -152,5 +149,16 @@ alias open='xdg-open &> /dev/null'
 
 EOS
 
+#Post-installation script
+cat << EOS >> /etc/skel/.profile
+
+#Post installation script
+grep MRIcroGL ~/.bashrc > /dev/null
+if [ $? -eq 1 ]; then
+    cd ~/git/lin4neuro-bionic
+    xfce4-terminal -x './build-l4n-bionic-2.sh' &
+fi
+
+EOS
 
 
