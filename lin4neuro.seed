@@ -365,6 +365,7 @@ d-i apt-setup/security_path string /ubuntu
 
 
 ### Package selection
+tasksel tasksel/first multiselect 
 #tasksel tasksel/first multiselect ubuntu-desktop
 #tasksel tasksel/first multiselect lamp-server, print-server
 #tasksel tasksel/first multiselect kubuntu-desktop
@@ -375,7 +376,7 @@ d-i apt-setup/security_path string /ubuntu
 #d-i pkgsel/upgrade select none
 
 # Language pack selection
-d-i pkgsel/language-packs multiselect en, ja
+d-i pkgsel/language-packs multiselect ja, en
 
 # Policy for applying updates. May be "none" (no automatic updates),
 # "unattended-upgrades" (install security updates automatically), or

@@ -138,13 +138,11 @@ cp -r "${base_path}"/config/xfce4 /etc/skel/.config
 mkdir /etc/skel/git
 cp -r ../lin4neuro-bionic /etc/skel/git/
 
+#post-installation script
+cp "${base_Path}"/etc/profile.d/l4n_postsetup.sh /etc/profile.d/
+
 #Clean packages
 apt-get -y autoremove
-
-##GRUB customization to show GRUB on boot
-#sed -i -e 's/GRUB_TIMEOUT_STYLE/#GRUB_TIMEOUT_STYLE/' /etc/default/grub
-#sed -i -e 's/GRUB_TIMEOUT=0/GRUB_TIMEOUT=10/' /etc/default/grub
-#update-grub
 
 #alias
 cat << EOS >> /etc/skel/.bashrc
