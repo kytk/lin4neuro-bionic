@@ -28,8 +28,8 @@ tee /etc/apt/sources.list.d/neurodebian.sources.list
 
 #Signature for neurodebian
 apt-get install -y gnupg
-apt-key adv --recv-keys --keyserver \
-  hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9
+#apt-key adv --recv-keys --keyserver \
+#  hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9
 #Alternative way 2
 #gpg --keyserver hkp://pool.sks-keyservers.net:80 --recv-keys 0xA5D32F012649A5A9
 #gpg -a --export 0xA5D32F012649A5A9 | apt-key add -
@@ -41,10 +41,9 @@ apt-get -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 	dkms thunar-archive-plugin file-roller gawk fonts-noto 		\
 	xdg-utils 
 
-apt-get -y install pkg-config libopenblas-dev liblapack-dev \
-	libhdf5-serial-dev graphviz 
-apt-get -y install python3-venv python3-pip python3-dev    \
-        python3-tk      
+apt-get -y install pkg-config libopenblas-dev liblapack-dev		\
+	libhdf5-serial-dev graphviz python3-venv python3-pip 		\
+	python3-dev python3-tk      
 
 
 #Installation of misc packages
@@ -138,8 +137,6 @@ cp -r "${base_path}"/config/xfce4 /etc/skel/.config
 mkdir /etc/skel/git
 cp -r ../lin4neuro-bionic /etc/skel/git/
 
-#Upgrade
-apt-get -y dist-upgrade
 
 #Clean packages
 apt-get -y autoremove
