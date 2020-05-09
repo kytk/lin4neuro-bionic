@@ -55,7 +55,7 @@ apt-get -y install at-spi2-core bc byobu curl dc 		\
 	system-config-samba tree unzip update-manager vim 	\
 	wajig xfce4-screenshooter zip ntp tcsh baobab xterm     \
         bleachbit libopenblas-base cups apturl dmz-cursor-theme \
-	chntpw gddrescue p7zip-full
+	chntpw gddrescue p7zip-full git
 
 #Workaround for system-config-samba
 touch /etc/libuser.conf
