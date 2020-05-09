@@ -138,6 +138,9 @@ cp -r "${base_path}"/config/xfce4 /etc/skel/.config
 mkdir /etc/skel/git
 cp -r ../lin4neuro-bionic /etc/skel/git/
 
+#Upgrade
+apt-get -y dist-upgrade
+
 #Clean packages
 apt-get -y autoremove
 
