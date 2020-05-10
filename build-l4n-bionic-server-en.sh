@@ -6,13 +6,13 @@
 
 rm /etc/apt/sources.list
 cat << EOF >> /etc/apt/sources.list
-deb http://jp.archive.ubuntu.com/ubuntu/ bionic main restricted
-deb http://jp.archive.ubuntu.com/ubuntu/ bionic-updates main restricted
-deb http://jp.archive.ubuntu.com/ubuntu/ bionic universe
-deb http://jp.archive.ubuntu.com/ubuntu/ bionic-updates universe
-deb http://jp.archive.ubuntu.com/ubuntu/ bionic multiverse
-deb http://jp.archive.ubuntu.com/ubuntu/ bionic-updates multiverse
-deb http://jp.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb http://us.archive.ubuntu.com/ubuntu/ bionic main restricted
+deb http://us.archive.ubuntu.com/ubuntu/ bionic-updates main restricted
+deb http://us.archive.ubuntu.com/ubuntu/ bionic universe
+deb http://us.archive.ubuntu.com/ubuntu/ bionic-updates universe
+deb http://us.archive.ubuntu.com/ubuntu/ bionic multiverse
+deb http://us.archive.ubuntu.com/ubuntu/ bionic-updates multiverse
+deb http://us.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
 deb http://security.ubuntu.com/ubuntu bionic-security main restricted
 deb http://security.ubuntu.com/ubuntu bionic-security universe
 deb http://security.ubuntu.com/ubuntu bionic-security multiverse
@@ -20,9 +20,9 @@ EOF
 
 apt-get update
 
-#Setup Neurodebian repository using repo in Japan
+#Setup Neurodebian repository using repo in us-nh
 apt-get install wget
-wget -O- http://neuro.debian.net/lists/bionic.jp.full | \
+wget -O- http://neuro.debian.net/lists/bionic.us-nh.full | \
 tee /etc/apt/sources.list.d/neurodebian.sources.list
 
 
@@ -67,10 +67,8 @@ cp /usr/share/vim/vimrc /etc/skel/.vimrc
 sed -i -e 's/"set background=dark/set background=dark/' /etc/skel/.vimrc
 
 #Install firefox and libreoffice
-apt-get -y install fcitx fcitx-mozc fcitx-config-gtk 	\
-           unar nkf firefox firefox-locale-ja im-config
-apt-get -y install libreoffice libreoffice-l10n-ja \
-	libreoffice-help-ja
+apt-get -y install firefox firefox-locale-en 
+apt-get -y install libreoffice libreoffice-help-en
 
 #Remove xscreensaver
 apt-get -y purge xscreensaver
