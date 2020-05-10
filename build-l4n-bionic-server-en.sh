@@ -158,7 +158,7 @@ EOS
 cat << 'EOS' >> /etc/skel/.profile
 
 #Post installation script
-if [ $(uid -u) -ne 999 ]; then 
+if [ $(id -u) -ne 999 ]; then 
   if [ ! -d /usr/local/MRIcroGL ]; then
       cd ~/git/lin4neuro-bionic
       xfce4-terminal -x './build-l4n-bionic-2.sh' &
