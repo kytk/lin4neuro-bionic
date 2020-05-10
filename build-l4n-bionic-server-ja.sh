@@ -137,7 +137,14 @@ cp -r "${base_path}"/config/xfce4 /etc/skel/.config
 mkdir /etc/skel/git
 cp -r ../lin4neuro-bionic /etc/skel/git/
 
-
+#Delete ubuntu-desktop
+apt-get purge -y nautilus gnome-power-manager gnome-screensaver gnome-termina* \
+  gnome-pane* gnome-applet* gnome-bluetooth gnome-desktop* gnome-sessio* \
+  gnome-user* gnome-shell-common compiz compiz* unity unity* hud zeitgeist \
+  zeitgeist* python-zeitgeist libzeitgeist* activity-log-manager-common \
+  gnome-control-center gnome-screenshot overlay-scrollba* 
+apt-get install -y gnome-software eog
+ 
 #Clean packages
 apt-get -y autoremove
 
@@ -153,9 +160,11 @@ EOS
 cat << EOS >> /etc/skel/.profile
 
 #Post installation script
-if [ ! -d /usr/local/MRIcroGL ]; then
-    cd ~/git/lin4neuro-bionic
-    xfce4-terminal -x './build-l4n-bionic-2.sh' &
+if [ `whoami` != "ubuntu" ]; then #except live-user
+  if [ ! -d /usr/local/MRIcroGL ]; then
+      cd ~/git/lin4neuro-bionic
+      xfce4-terminal -x './build-l4n-bionic-2.sh' &
+  fi
 fi
 
 EOS
