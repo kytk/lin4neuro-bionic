@@ -155,10 +155,10 @@ alias open='xdg-open &> /dev/null'
 EOS
 
 #Post-installation script
-cat << EOS >> /etc/skel/.profile
+cat << 'EOS' >> /etc/skel/.profile
 
 #Post installation script
-if [ `whoami` != "ubuntu" ]; then #except live-user
+if [ $(uid -u) -ne 999 ]; then 
   if [ ! -d /usr/local/MRIcroGL ]; then
       cd ~/git/lin4neuro-bionic
       xfce4-terminal -x './build-l4n-bionic-2.sh' &
@@ -168,6 +168,8 @@ fi
 #update lin4neuro-bionic
 cd ~/git/lin4neuro-bionic
 git pull
+
+cd $HOME 
 
 EOS
 
