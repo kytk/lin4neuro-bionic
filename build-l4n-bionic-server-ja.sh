@@ -167,6 +167,10 @@ if [ `whoami` != "ubuntu" ]; then #except live-user
   fi
 fi
 
+#update lin4neuro-bionic
+cd ~/git/lin4neuro-bionic
+git pull
+
 EOS
 
 
