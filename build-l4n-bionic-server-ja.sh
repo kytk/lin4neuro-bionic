@@ -169,7 +169,7 @@ fi
 
 #update lin4neuro-bionic
 cd ~/git/lin4neuro-bionic
-git pull
+git pull &
 
 cd $HOME 
 
