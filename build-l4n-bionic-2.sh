@@ -26,6 +26,9 @@
 log=$(date +%Y%m%d%H%M%S)-part2.log
 exec &> >(tee -a "$log")
 
+#Setting of path of the setting scripts
+currentdir=$(cd $(dirname $0) && pwd)
+base_path=$currentdir/lin4neuro-parts
 
 #Settings for Japanese
 if [ $LANG == "ja_JP.UTF-8" ]; then
@@ -34,10 +37,6 @@ if [ $LANG == "ja_JP.UTF-8" ]; then
   rm -rf ダウンロード テンプレート デスクトップ ドキュメント ビデオ ピクチャ ミュージック 公開
   im-config -n fcitx
 fi
-
-#Setting of path of the setting scripts
-currentdir=$(cd $(dirname $0) && pwd)
-base_path=$currentdir/lin4neuro-parts
 
 echo "Install neuroimaging-related software packages"
 
