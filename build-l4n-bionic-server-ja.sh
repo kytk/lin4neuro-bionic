@@ -167,10 +167,6 @@ if [ $(id -u) -ne 999 ]; then
   fi
 fi
 
-#update lin4neuro-bionic
-cd ~/git/lin4neuro-bionic
-git pull &
-
 cd $HOME 
 
 EOS
