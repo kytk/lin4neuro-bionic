@@ -91,7 +91,8 @@ update-alternatives --install 					\
 	default.plymouth 						\
 	/usr/share/plymouth/themes/lin4neuro-logo/lin4neuro-logo.plymouth \
 	100
-update-initramfs -u -k all
+update-alternatives --config default.plymouth
+update-initramfs -u 
 
 #Installation of icons
 mkdir -p /etc/skel/.local/share
@@ -147,6 +148,9 @@ apt-get install -y gnome-software eog
  
 #Clean packages
 apt-get -y autoremove
+
+#Remove unnecessary configuration files
+dpkg -l | awk '/^rc/ {print $2}' | xargs dpkg --purge
 
 #alias
 cat << EOS >> /etc/skel/.bashrc
