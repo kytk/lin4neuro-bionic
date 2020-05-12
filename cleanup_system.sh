@@ -10,7 +10,9 @@ echo "remove apt cache"
 sudo apt-get -y clean
 
 echo "remove unnecessary configuration files"
-dpkg -l | awk '/^rc/ {print $2}' | xargs sudo dpkg --purge
+if [ $(dpkg -l | egrep ^rc | wc -l) -gt 0 ]; then
+  dpkg -l | awk '/^rc/ {print $2}' | xargs sudo dpkg --purge
+fi
 
 echo "clear /var/logs"
 sudo find /var/log/ -type f -exec cp -f /dev/null {} \;
