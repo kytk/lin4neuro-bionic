@@ -2,9 +2,10 @@
 #Lin4Neuro making script part 2
 #Installation of Neuroimaging software packages
 #Prerequisite: You need to finish the build-l4n-bionic-1.sh.
-#Kiyotaka Nemoto 09-May-2020
+#Kiyotaka Nemoto 15-May-2020
 
 #Changelog
+#15-May-2020 Rollback libreoffice to default 
 #09-May-2020 Add xdg-user-dirs-update
 #25-Apr-2020 Update Alize to 1.98.17.1
 #25-Apr-2020 Change R repositoby back to r-project.org
@@ -44,9 +45,9 @@ echo "Install neuroimaging-related software packages"
 sudo apt-key add ${currentdir}/neuro.debian.net.asc
 
 #Libreoffice
-sudo add-apt-repository -y ppa:libreoffice/ppa
-sudo apt-get update
-sudo apt-get -y dist-upgrade
+#sudo add-apt-repository -y ppa:libreoffice/ppa
+#sudo apt-get update
+#sudo apt-get -y dist-upgrade
 
 
 #Octave
