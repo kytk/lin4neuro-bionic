@@ -23,6 +23,7 @@ do
      echo "quit."
      exit 0
   fi
+done
 
 rm /etc/apt/sources.list
 cat << EOF >> /etc/apt/sources.list
