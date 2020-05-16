@@ -10,12 +10,12 @@ fi
 cd /usr/local
 sudo unzip ~/Downloads/ANTs.zip
 
-grep ANTs ~/.bashrc > /dev/null
+grep ANTs ~/.bash_aliases > /dev/null
 if [ $? -eq 1 ]; then
-    echo '' >> ~/.bashrc
-    echo '#ANTs' >> ~/.bashrc
-    echo 'export ANTSPATH=/usr/local/ANTs/bin' >> ~/.bashrc
-    echo 'export PATH=$PATH:$ANTSPATH' >> ~/.bashrc
+    echo '' >> ~/.bash_aliases
+    echo '#ANTs' >> ~/.bash_aliases
+    echo 'export ANTSPATH=/usr/local/ANTs/bin' >> ~/.bash_aliases
+    echo 'export PATH=$PATH:$ANTSPATH' >> ~/.bash_aliases
 fi
 
 echo "Finished!"

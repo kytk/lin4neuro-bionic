@@ -23,9 +23,9 @@ sudo unzip ~/Downloads/conn18b_glnxa64.zip
 sed -i 's/NoDisplay=true/NoDisplay=false/' ~/.local/share/applications/conn18b.desktop
 
 #alias
-echo '' >> ~/.bashrc
-echo '#conn18b standalone' >> ~/.bashrc
-echo "alias conn='/usr/local/conn18b_standalone/run_conn.sh /usr/local/MATLAB/MCR/v95'" >> ~/.bashrc
+echo '' >> ~/.bash_aliases
+echo '#conn18b standalone' >> ~/.bash_aliases
+echo "alias conn='/usr/local/conn18b_standalone/run_conn.sh /usr/local/MATLAB/MCR/v95'" >> ~/.bash_aliases
 
 
 echo "Finished! Run CONN from menu -> Neuroimaging -> CONN"

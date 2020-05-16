@@ -24,11 +24,11 @@ else
     echo "$R_LIBS already exists."
 fi
 
-grep R_LIBS ~/.bashrc > /dev/null
+grep R_LIBS ~/.bash_aliases > /dev/null
 if [ $? -eq 1 ]; then
-    echo '' >> ~/.bashrc
-    echo '#R for AFNI' >> ~/.bashrc
-    echo 'export R_LIBS=$HOME/R' >> ~/.bashrc
+    echo '' >> ~/.bash_aliases
+    echo '#R for AFNI' >> ~/.bash_aliases
+    echo 'export R_LIBS=$HOME/R' >> ~/.bash_aliases
 fi
 
 #Install new R, removing any old one first.

@@ -13,11 +13,11 @@ sudo rm -rf Slicer
 sudo tar xvzf ~/Downloads/Slicer-4.10.2-linux-amd64.tar.gz
 sudo mv Slicer-4.10.2-linux-amd64 Slicer
 
-grep Slicer ~/.bashrc > /dev/null
+grep Slicer ~/.bash_aliases > /dev/null
 if [ $? -eq 1 ]; then
-    echo '' >> ~/.bashrc
-    echo '#Slicer' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/Slicer' >> ~/.bashrc
+    echo '' >> ~/.bash_aliases
+    echo '#Slicer' >> ~/.bash_aliases
+    echo 'export PATH=$PATH:/usr/local/Slicer' >> ~/.bash_aliases
 fi
 
 #make icon show in the neuroimaging directory

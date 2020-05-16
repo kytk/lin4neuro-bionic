@@ -32,12 +32,12 @@ cd /usr/local
 sudo tar xvzf ~/Downloads/c3d-1.0.0-Linux-x86_64.tar.gz
 sudo mv c3d-1.0.0-Linux-x86_64 c3d
 
-grep c3d ~/.bashrc > /dev/null
+grep c3d ~/.bash_aliases > /dev/null
 if [ $? -eq 1 ]; then
-    echo '' >> ~/.bashrc
-    echo '#c3d' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/c3d/bin' >> ~/.bashrc
-    echo 'source $HOME/bin/bashcomp.sh' >> ~/.bashrc
+    echo '' >> ~/.bash_aliases
+    echo '#c3d' >> ~/.bash_aliases
+    echo 'export PATH=$PATH:/usr/local/c3d/bin' >> ~/.bash_aliases
+    echo 'source $HOME/bin/bashcomp.sh' >> ~/.bash_aliases
 fi
 
 #itksnap
@@ -61,11 +61,11 @@ cd $HOME/Downloads
 curl -O http://security.ubuntu.com/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1.1_amd64.deb
 sudo apt install -y ./libpng12-0_1.2.54-1ubuntu1.1_amd64.deb
 
-grep itksnap ~/.bashrc > /dev/null
+grep itksnap ~/.bash_aliases > /dev/null
 if [ $? -eq 1 ]; then
-    echo '' >> ~/.bashrc
-    echo '#ITK-SNAP' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/itksnap/bin' >> ~/.bashrc
+    echo '' >> ~/.bash_aliases
+    echo '#ITK-SNAP' >> ~/.bash_aliases
+    echo 'export PATH=$PATH:/usr/local/itksnap/bin' >> ~/.bash_aliases
 fi
 
 #Mango
@@ -99,11 +99,11 @@ cd mricron
 sudo find lut -type f -exec chmod 644 {} \;
 sudo find templates -type f -exec chmod 644 {} \;
 
-grep mricron ~/.bashrc > /dev/null
+grep mricron ~/.bash_aliases > /dev/null
 if [ $? -eq 1 ]; then
-    echo '' >> ~/.bashrc
-    echo '#MRIcron' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/mricron' >> ~/.bashrc
+    echo '' >> ~/.bash_aliases
+    echo '#MRIcron' >> ~/.bash_aliases
+    echo 'export PATH=$PATH:/usr/local/mricron' >> ~/.bash_aliases
 fi
 
 #MRIcroGL
@@ -120,12 +120,12 @@ cd /usr/local
 sudo rm -rf MRIcroGL
 sudo unzip ~/Downloads/MRIcroGL_linux.zip
 
-grep MRIcroGL ~/.bashrc > /dev/null
+grep MRIcroGL ~/.bash_aliases > /dev/null
 if [ $? -eq 1 ]; then
-    echo '' >> ~/.bashrc
-    echo '#MRIcroGL' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/MRIcroGL' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/MRIcroGL/Resources' >> ~/.bashrc
+    echo '' >> ~/.bash_aliases
+    echo '#MRIcroGL' >> ~/.bash_aliases
+    echo 'export PATH=$PATH:/usr/local/MRIcroGL' >> ~/.bash_aliases
+    echo 'export PATH=$PATH:/usr/local/MRIcroGL/Resources' >> ~/.bash_aliases
 fi
 
 #tutorial

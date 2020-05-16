@@ -1,5 +1,5 @@
 #!/bin/bash
-#Script to setup mrtrix3 for Ubuntu 16.04
+#Script to setup mrtrix3 for Ubuntu 18.04
 
 #Install prerequisite packages
 echo "Begin installation of MRtrix3"
@@ -21,11 +21,11 @@ cd mrtrix3
 ./configure
 ./build
 
-#.bashrc
-echo "Add path to ~/.bashrc"
-echo >> $HOME/.bashrc
-echo "#MRtrix3" >> $HOME/.bashrc
-echo 'export PATH=$PATH:$HOME/git/mrtrix3/bin:$HOME/git/mrtrix3/scripts' >> $HOME/.bashrc
+#.bash_aliases
+echo "Add path to ~/.bash_aliases"
+echo >> $HOME/.bash_aliases
+echo "#MRtrix3" >> $HOME/.bash_aliases
+echo 'export PATH=$PATH:$HOME/git/mrtrix3/bin:$HOME/git/mrtrix3/scripts' >> $HOME/.bash_aliases
 
 echo "Finished!"
 sleep 5

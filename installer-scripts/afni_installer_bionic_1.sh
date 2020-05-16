@@ -34,25 +34,25 @@ sudo tcsh @update.afni.binaries -curl -package linux_ubuntu_16_64 -bindir /usr/l
 
 cd $HOME
 
-#.bashrc
-grep AFNI ~/.bashrc > /dev/null
+#.bash_aliases
+grep AFNI ~/.bash_aliases > /dev/null
 if [ $? -eq 1 ]; then
-    echo ' ' >> ~/.bashrc
-    echo '#AFNI' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/AFNIbin' >> ~/.bashrc
+    echo ' ' >> ~/.bash_aliases
+    echo '#AFNI' >> ~/.bash_aliases
+    echo 'export PATH=$PATH:/usr/local/AFNIbin' >> ~/.bash_aliases
 fi
 
-source ~/.bashrc
+source ~/.bash_aliases
 
 #Make AFNI/SUMA profiles
 cp /usr/local/AFNIbin/AFNI.afnirc $HOME/.afnirc
 
-grep ahdir ~/.bashrc > /dev/null
+grep ahdir ~/.bash_aliases > /dev/null
 if [ $? -eq 1 ]; then
-  echo 'ahdir=$(apsearch -afni_help_dir)' >> ~/.bashrc
-  echo 'if [ -f "$ahdir/all_progs.COMP.bash" ]; then' >> ~/.bashrc
-  echo '  . $ahdir/all_progs.COMP.bash' >> ~/.bashrc
-  echo 'fi' >> ~/.bashrc
+  echo 'ahdir=$(apsearch -afni_help_dir)' >> ~/.bash_aliases
+  echo 'if [ -f "$ahdir/all_progs.COMP.bash" ]; then' >> ~/.bash_aliases
+  echo '  . $ahdir/all_progs.COMP.bash' >> ~/.bash_aliases
+  echo 'fi' >> ~/.bash_aliases
 fi
 
 #make icon show in the neuroimaging directory

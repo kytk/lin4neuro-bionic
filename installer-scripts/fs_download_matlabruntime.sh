@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#Matlab Runtime download script for FreeSurfer v6
 #This script is based on 
 #https://surfer.nmr.mgh.harvard.edu/fswiki/MatlabRuntime
 
