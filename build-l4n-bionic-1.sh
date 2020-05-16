@@ -8,6 +8,7 @@
 
 #ChangeLog
 #16-May-2020 add settings to .bash_aliases instead of .bashrc
+#16-May-2020 add meld
 #04-May-2020 drop VirtualBox settings
 #22-Feb-2020 drop nemo and add rename
 #28-Dec-2019 Add gddrescue
@@ -128,7 +129,7 @@ sudo apt-get -y install at-spi2-core bc byobu curl wget dc	\
 	system-config-samba tree unzip update-manager vim 	\
 	wajig xfce4-screenshooter zip ntp tcsh baobab xterm     \
         bleachbit libopenblas-base cups apturl dmz-cursor-theme \
-	chntpw gddrescue p7zip-full gnupg eog
+	chntpw gddrescue p7zip-full gnupg eog meld
 
 #Workaround for system-config-samba
 sudo touch /etc/libuser.conf
