@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Install FreeSurfer 7.1.0
+Name[ja]=FreeSurfer 7.1.0のインストール
+Exec=sh -c "~/git/lin4neuro-bionic/installer-scripts/freesurfer7.1.0_installer_bionic.sh"
+Icon=fscortex
+#Categories=Neuroimaging;
+StartupNotify=true
+Terminal=true
+NoDisplay=true
+
