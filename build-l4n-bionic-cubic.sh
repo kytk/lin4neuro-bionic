@@ -1,8 +1,10 @@
 #!/bin/bash
 
 #Lin4Neuro ISO building script for Ubuntu 18.04 (Bionic) using cubic
+#copy this script to terminal in cubic and run
 
 #ChangeLog
+#16-May-2020 created this script
 
 echo "Which language do you want to build? (English/Japanese)"
 select lang in "English" "Japanese" "quit"
@@ -27,13 +29,13 @@ done
 
 rm /etc/apt/sources.list
 cat << EOF >> /etc/apt/sources.list
-deb http://${la}.archive.ubuntu.com/ubuntu/ bionic main restricted
-deb http://${la}.archive.ubuntu.com/ubuntu/ bionic-updates main restricted
-deb http://${la}.archive.ubuntu.com/ubuntu/ bionic universe
-deb http://${la}.archive.ubuntu.com/ubuntu/ bionic-updates universe
-deb http://${la}.archive.ubuntu.com/ubuntu/ bionic multiverse
-deb http://${la}.archive.ubuntu.com/ubuntu/ bionic-updates multiverse
-deb http://${la}.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb http://.archive.ubuntu.com/ubuntu/ bionic main restricted
+deb http://.archive.ubuntu.com/ubuntu/ bionic-updates main restricted
+deb http://.archive.ubuntu.com/ubuntu/ bionic universe
+deb http://.archive.ubuntu.com/ubuntu/ bionic-updates universe
+deb http://.archive.ubuntu.com/ubuntu/ bionic multiverse
+deb http://.archive.ubuntu.com/ubuntu/ bionic-updates multiverse
+deb http://.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
 deb http://security.ubuntu.com/ubuntu bionic-security main restricted
 deb http://security.ubuntu.com/ubuntu bionic-security universe
 deb http://security.ubuntu.com/ubuntu bionic-security multiverse
@@ -52,7 +54,6 @@ apt-get -y install pkg-config libopenblas-dev liblapack-dev		\
 	libhdf5-serial-dev graphviz python3-venv python3-pip 		\
 	python3-dev python3-tk      
 
-
 #Installation of misc packages
 apt-get -y install at-spi2-core bc byobu curl wget dc 		\
 	default-jre evince exfat-fuse exfat-utils gedit 	\
@@ -61,7 +62,7 @@ apt-get -y install at-spi2-core bc byobu curl wget dc 		\
 	system-config-samba tree unzip update-manager vim 	\
 	wajig xfce4-screenshooter zip ntp tcsh baobab xterm     \
         bleachbit libopenblas-base cups apturl dmz-cursor-theme \
-	chntpw gddrescue p7zip-full git
+	chntpw gddrescue p7zip-full git eog meld
 
 #Workaround for system-config-samba
 touch /etc/libuser.conf
@@ -77,7 +78,6 @@ sed -i -e 's/"set background=dark/set background=dark/' /etc/skel/.vimrc
 apt-get -y purge xscreensaver
 
 ###Language-dependent settings###
-
 if [ $la == "us" ]; then
   #neurodebian
   wget -O- http://neuro.debian.net/lists/bionic.us-nh.full | \
@@ -88,7 +88,6 @@ if [ $la == "us" ]; then
   apt-get -y install libreoffice libreoffice-help-en
 
 elif [ $la == "ja" ]; then
-
   #neurodebian
   wget -O- http://neuro.debian.net/lists/bionic.jp.full | \
   tee /etc/apt/sources.list.d/neurodebian.sources.list
@@ -98,7 +97,6 @@ elif [ $la == "ja" ]; then
            unar nkf firefox firefox-locale-ja im-config
   apt-get -y install libreoffice libreoffice-l10n-ja \
 	libreoffice-help-ja
-
 fi
 
 
@@ -171,7 +169,6 @@ apt-get purge -y nautilus gnome-power-manager gnome-screensaver gnome-termina* \
   gnome-user* gnome-shell-common compiz compiz* unity unity* hud zeitgeist \
   zeitgeist* python-zeitgeist libzeitgeist* activity-log-manager-common \
   gnome-control-center gnome-screenshot overlay-scrollba* 
-apt-get install -y gnome-software eog
  
 #Clean packages
 apt-get -y autoremove
@@ -180,7 +177,7 @@ apt-get -y autoremove
 dpkg -l | awk '/^rc/ {print $2}' | xargs dpkg --purge
 
 #alias
-cat << EOS >> /etc/skel/.bashrc
+cat << EOS >> /etc/skel/.bash_aliases
 
 #alias for xdg-open
 alias open='xdg-open &> /dev/null'
@@ -202,4 +199,6 @@ cd $HOME
 
 EOS
 
+echo "Done."
+exit
 
