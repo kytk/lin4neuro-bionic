@@ -29,13 +29,13 @@ done
 
 rm /etc/apt/sources.list
 cat << EOF >> /etc/apt/sources.list
-deb http://.archive.ubuntu.com/ubuntu/ bionic main restricted
-deb http://.archive.ubuntu.com/ubuntu/ bionic-updates main restricted
-deb http://.archive.ubuntu.com/ubuntu/ bionic universe
-deb http://.archive.ubuntu.com/ubuntu/ bionic-updates universe
-deb http://.archive.ubuntu.com/ubuntu/ bionic multiverse
-deb http://.archive.ubuntu.com/ubuntu/ bionic-updates multiverse
-deb http://.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ bionic main restricted
+deb http://archive.ubuntu.com/ubuntu/ bionic-updates main restricted
+deb http://archive.ubuntu.com/ubuntu/ bionic universe
+deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe
+deb http://archive.ubuntu.com/ubuntu/ bionic multiverse
+deb http://archive.ubuntu.com/ubuntu/ bionic-updates multiverse
+deb http://archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
 deb http://security.ubuntu.com/ubuntu bionic-security main restricted
 deb http://security.ubuntu.com/ubuntu bionic-security universe
 deb http://security.ubuntu.com/ubuntu bionic-security multiverse
