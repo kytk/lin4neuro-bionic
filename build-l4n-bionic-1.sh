@@ -117,7 +117,8 @@ sudo apt-get -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 sudo apt-get -y install pkg-config libopenblas-dev liblapack-dev 	\
 	libhdf5-serial-dev graphviz 
 sudo apt-get -y install python3-venv python3-pip python3-dev python3-tk      
-
+#numpy for python2 is needed for FSL aff2reg
+sudo apt-get -y install python-numpy
 
 #Installation of misc packages
 echo "Installation of misc packages"
