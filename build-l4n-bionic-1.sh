@@ -1,13 +1,14 @@
 #!/bin/bash
 
-#Lin4Neuro making script for Ubuntu 18.04 (Bionic)
+#Lin4Neuro building script for Ubuntu 18.04 (Bionic)
 #This script installs minimal Ubuntu with XFCE 4.12
 #and Lin4Neuro theme.
-#Prerequisite: You need to install Ubuntu mini.iso and git beforehand.
-#04-May-2020 K. Nemoto
+#Pre-requisite: You need to install Ubuntu mini.iso and git beforehand.
+#16-May-2020 K. Nemoto
 
 #ChangeLog
-#04-May-2020 drop VirtualBox settings and 7z
+#16-May-2020 add settings to .bash_aliases instead of .bashrc
+#04-May-2020 drop VirtualBox settings
 #22-Feb-2020 drop nemo and add rename
 #28-Dec-2019 Add gddrescue
 #25-Nov-2019 Add boot-repair
@@ -73,7 +74,7 @@ do
      sudo update-locale LANG=ja_JP.UTF-8
 
      #Setup tzdata
-     sudo dpkg-reconfigure tzdata
+     #sudo dpkg-reconfigure tzdata
 
      #replace us with ja in  /etc/apt/sources.list
      sudo sed -i 's|http://us.|http://ja.|g' /etc/apt/sources.list
@@ -87,7 +88,7 @@ do
   elif [ $lang == "English" ] ; then
 
      #Setup tzdata
-     sudo dpkg-reconfigure tzdata
+     #sudo dpkg-reconfigure tzdata
 
      #Setup Neurodebian repository using in repo in us-nh
      wget -O- http://neuro.debian.net/lists/bionic.us-nh.full | \
@@ -100,19 +101,8 @@ do
   fi
 done
 
-#Install linux-{image,headers}-generic-hwe-18.04
-#Disabled because of installer problems as of 25 Nov 2019
+#Uncomment the following line to install linux-{image,headers}-generic-hwe-18.04
 #sudo apt-get -y install linux-{image,headers}-generic-hwe-18.04
-
-#Signature for neurodebian
-sudo apt-get install -y gnupg
-sudo apt-key add neuro.debian.net.asc
-#Alternative way 1
-#sudo apt-key adv --recv-keys --keyserver \
-#     hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9
-#Alternative way 2
-#gpg --keyserver hkp://pool.sks-keyservers.net:80 --recv-keys 0xA5D32F012649A5A9
-#gpg -a --export 0xA5D32F012649A5A9 | sudo apt-key add -
 
 #Installation of XFCE 4.12
 echo "Installation of XFCE 4.12"
@@ -123,23 +113,22 @@ sudo apt-get -y install xfce4 xfce4-terminal xfce4-indicator-plugin 	\
 	xdg-utils 
 
 #Installation of python-related packages
-sudo apt-get -y install pkg-config libopenblas-dev liblapack-dev \
+sudo apt-get -y install pkg-config libopenblas-dev liblapack-dev 	\
 	libhdf5-serial-dev graphviz 
-sudo apt-get -y install python3-venv python3-pip python3-dev    \
-        python3-tk      
+sudo apt-get -y install python3-venv python3-pip python3-dev python3-tk      
 
 
 #Installation of misc packages
 echo "Installation of misc packages"
 
-sudo apt-get -y install at-spi2-core bc byobu curl dc 		\
+sudo apt-get -y install at-spi2-core bc byobu curl wget dc	\
 	default-jre evince exfat-fuse exfat-utils gedit 	\
 	gnome-system-monitor gnome-system-tools gparted		\
 	imagemagick rename ntp system-config-printer-gnome 	\
 	system-config-samba tree unzip update-manager vim 	\
 	wajig xfce4-screenshooter zip ntp tcsh baobab xterm     \
         bleachbit libopenblas-base cups apturl dmz-cursor-theme \
-	chntpw gddrescue p7zip-full
+	chntpw gddrescue p7zip-full gnupg eog
 
 #Workaround for system-config-samba
 sudo touch /etc/libuser.conf
@@ -250,7 +239,7 @@ sudo add-apt-repository -y ppa:yannubuntu/boot-repair
 sudo apt-get install -y boot-repair
 
 #alias
-cat << EOS >> ~/.bashrc
+cat << EOS >> ~/.bash_aliases
 
 #alias for xdg-open
 alias open='xdg-open &> /dev/null'
