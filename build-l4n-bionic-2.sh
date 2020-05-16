@@ -1,10 +1,11 @@
 #!/bin/bash
-#Lin4Neuro making script part 2
+#Lin4Neuro building script part 2
 #Installation of Neuroimaging software packages
 #Prerequisite: You need to finish the build-l4n-bionic-1.sh.
-#Kiyotaka Nemoto 15-May-2020
+#Kiyotaka Nemoto 16-May-2020
 
 #Changelog
+#16-May-2020 add settings to .bash_aliases instead of .bashrc
 #15-May-2020 Rollback libreoffice to default 
 #09-May-2020 Add xdg-user-dirs-update
 #25-Apr-2020 Update Alize to 1.98.17.1
@@ -35,7 +36,10 @@ base_path=$currentdir/lin4neuro-parts
 if [ $LANG == "ja_JP.UTF-8" ]; then
   LANG=C xdg-user-dirs-update --force
   cd $HOME
-  rm -rf ダウンロード テンプレート デスクトップ ドキュメント ビデオ ピクチャ ミュージック 公開
+  if [ -d ダウンロード ]; then
+    rm -rf ダウンロード テンプレート デスクトップ ドキュメント ビデオ \
+           ピクチャ ミュージック 公開
+  fi
   im-config -n fcitx
 fi
 
@@ -43,8 +47,15 @@ echo "Install neuroimaging-related software packages"
 
 #Signature for Neurodebian
 sudo apt-key add ${currentdir}/neuro.debian.net.asc
+#Alternative way 1
+#sudo apt-key adv --recv-keys --keyserver \
+#     hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9
+#Alternative way 2
+#gpg --keyserver hkp://pool.sks-keyservers.net:80 --recv-keys 0xA5D32F012649A5A9
+#gpg -a --export 0xA5D32F012649A5A9 | sudo apt-key add -
 
 #Libreoffice
+#Uncomment the following three lines to use the latest libreoffice
 #sudo add-apt-repository -y ppa:libreoffice/ppa
 #sudo apt-get update
 #sudo apt-get -y dist-upgrade
@@ -127,11 +138,11 @@ cd ROBEX
 sudo find -type f -exec chmod 644 {} \;
 sudo chmod 755 ROBEX runROBEX.sh dat ref_vols
 
-grep ROBEX ~/.bashrc > /dev/null
+grep ROBEX ~/.bash_aliases > /dev/null
 if [ $? -eq 1 ]; then
-    echo '' >> ~/.bashrc
-    echo '#ROBEX' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/ROBEX' >> ~/.bashrc
+    echo '' >> ~/.bash_aliases
+    echo '#ROBEX' >> ~/.bash_aliases
+    echo 'export PATH=$PATH:/usr/local/ROBEX' >> ~/.bash_aliases
 fi
 
 #c3d
@@ -148,12 +159,12 @@ cd /usr/local
 sudo tar xvzf ~/Downloads/c3d-1.0.0-Linux-x86_64.tar.gz
 sudo mv c3d-1.0.0-Linux-x86_64 c3d
 
-grep c3d ~/.bashrc > /dev/null
+grep c3d ~/.bash_aliases > /dev/null
 if [ $? -eq 1 ]; then
-    echo '' >> ~/.bashrc
-    echo '#c3d' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/c3d/bin' >> ~/.bashrc
-    echo 'source $HOME/bin/bashcomp.sh' >> ~/.bashrc
+    echo '' >> ~/.bash_aliases
+    echo '#c3d' >> ~/.bash_aliases
+    echo 'export PATH=$PATH:/usr/local/c3d/bin' >> ~/.bash_aliases
+    echo 'source $HOME/bin/bashcomp.sh' >> ~/.bash_aliases
 fi
 
 #itksnap
@@ -174,11 +185,11 @@ cd $HOME/Downloads
 curl -O http://security.ubuntu.com/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1.1_amd64.deb
 sudo apt install -y ./libpng12-0_1.2.54-1ubuntu1.1_amd64.deb
 
-grep itksnap ~/.bashrc > /dev/null
+grep itksnap ~/.bash_aliases > /dev/null
 if [ $? -eq 1 ]; then
-    echo '' >> ~/.bashrc
-    echo '#ITK-SNAP' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/itksnap/bin' >> ~/.bashrc
+    echo '' >> ~/.bash_aliases
+    echo '#ITK-SNAP' >> ~/.bash_aliases
+    echo 'export PATH=$PATH:/usr/local/itksnap/bin' >> ~/.bash_aliases
 fi
 
 #Mango
@@ -207,11 +218,11 @@ cd mricron
 sudo find lut -type f -exec chmod 644 {} \;
 sudo find templates -type f -exec chmod 644 {} \;
 
-grep mricron ~/.bashrc > /dev/null
+grep mricron ~/.bash_aliases > /dev/null
 if [ $? -eq 1 ]; then
-    echo '' >> ~/.bashrc
-    echo '#MRIcron' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/mricron' >> ~/.bashrc
+    echo '' >> ~/.bash_aliases
+    echo '#MRIcron' >> ~/.bash_aliases
+    echo 'export PATH=$PATH:/usr/local/mricron' >> ~/.bash_aliases
 fi
 
 #MRIcroGL
@@ -223,12 +234,12 @@ curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/MRIcro
 cd /usr/local
 sudo unzip ~/Downloads/MRIcroGL_linux.zip
 
-grep MRIcroGL ~/.bashrc > /dev/null
+grep MRIcroGL ~/.bash_aliases > /dev/null
 if [ $? -eq 1 ]; then
-    echo '' >> ~/.bashrc
-    echo '#MRIcroGL' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/MRIcroGL' >> ~/.bashrc
-    echo 'export PATH=$PATH:/usr/local/MRIcroGL/Resources' >> ~/.bashrc
+    echo '' >> ~/.bash_aliases
+    echo '#MRIcroGL' >> ~/.bash_aliases
+    echo 'export PATH=$PATH:/usr/local/MRIcroGL' >> ~/.bash_aliases
+    echo 'export PATH=$PATH:/usr/local/MRIcroGL/Resources' >> ~/.bash_aliases
 fi
 
 #tutorial
