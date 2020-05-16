@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Talairach client
+Comment=
+Exec=sh -c 'java -jar /usr/local/tdaemon/talairach.jar'
+Icon=tdaemon.png
+Categories=Neuroimaging;
+StartupNotify=true
+Terminal=false

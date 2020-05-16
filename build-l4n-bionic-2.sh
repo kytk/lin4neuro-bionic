@@ -5,6 +5,7 @@
 #Kiyotaka Nemoto 16-May-2020
 
 #Changelog
+#16-May-2020 add talairach daemon and HCP workbench
 #16-May-2020 add settings to .bash_aliases instead of .bashrc
 #15-May-2020 Rollback libreoffice to default 
 #09-May-2020 Add xdg-user-dirs-update
@@ -83,6 +84,15 @@ sudo apt-get install -y r-base
 #DCMTK
 echo "Install DCMTK"
 sudo apt-get install -y dcmtk
+
+#talairach daemon
+sudo cp -r "${base_path}"/tdaemon /usr/local
+grep tdaemon ~/.bash_aliases > /dev/null
+if [ $? -eq 1 ]; then
+  echo '' >> ~/.bash_aliases
+  echo '#tdaemon' >> ~/.bash_aliases
+  echo "alias tdaemon='java -jar /usr/local/tdaemon/talairach.jar'" >> ~/.bash_aliases
+fi
 
 #MRIConvert
 echo "Install MRI convert"
@@ -240,6 +250,22 @@ if [ $? -eq 1 ]; then
     echo '#MRIcroGL' >> ~/.bash_aliases
     echo 'export PATH=$PATH:/usr/local/MRIcroGL' >> ~/.bash_aliases
     echo 'export PATH=$PATH:/usr/local/MRIcroGL/Resources' >> ~/.bash_aliases
+fi
+
+#HCP workbench
+echo "Install HCP Workbench"
+cd "$HOME"/Downloads
+curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/workbench-linux64-v1.4.2.zip
+
+cd /usr/local
+sudo unzip ~/Downloads/workbench-linux64-v1.4.2.zip
+sudo find /usr/local/workbench -type d -exec chmod 755 {} \;
+
+grep HCP  ~/.bash_aliases > /dev/null
+if [ $? -eq 1 ]; then
+    echo '' >> ~/.bash_aliases
+    echo '#HCP workbench' >> ~/.bash_aliases
+    echo 'export PATH=$PATH:/usr/local/workbench/bin_linux64' >> ~/.bash_aliases
 fi
 
 #tutorial

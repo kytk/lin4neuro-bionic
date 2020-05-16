@@ -1,11 +1,9 @@
 #!/bin/bash
 #Update neuroimaging-related software packages installed by build-2 script
 
-
 #Log
 log=$(date +%Y%m%d%H%M%S)-update.log
 exec &> >(tee -a "$log")
-
 
 #Aliza
 echo "Install Aliza"
@@ -127,6 +125,23 @@ if [ $? -eq 1 ]; then
     echo 'export PATH=$PATH:/usr/local/MRIcroGL' >> ~/.bash_aliases
     echo 'export PATH=$PATH:/usr/local/MRIcroGL/Resources' >> ~/.bash_aliases
 fi
+
+#HCP workbench
+echo "Install HCP Workbench"
+cd "$HOME"/Downloads
+curl -O http://www.lin4neuro.net/lin4neuro/neuroimaging_software_packages/workbench-linux64-v1.4.2.zip
+
+cd /usr/local
+sudo unzip ~/Downloads/workbench-linux64-v1.4.2.zip
+sudo find /usr/local/workbench -type d -exec chmod 755 {} \;
+
+grep HCP  ~/.bash_aliases > /dev/null
+if [ $? -eq 1 ]; then
+    echo '' >> ~/.bash_aliases
+    echo '#HCP workbench' >> ~/.bash_aliases
+    echo 'export PATH=$PATH:/usr/local/workbench/bin_linux64' >> ~/.bash_aliases
+fi
+
 
 #tutorial
 echo "Install tutorial by Chris Rorden"
