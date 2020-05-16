@@ -117,7 +117,7 @@ update-alternatives --install 					\
 	/usr/share/plymouth/themes/lin4neuro-logo/lin4neuro-logo.plymouth \
 	100
 update-alternatives --config default.plymouth
-update-initramfs -u 
+update-initramfs -u -k all
 
 #Installation of icons
 mkdir -p /etc/skel/.local/share
