@@ -1,6 +1,6 @@
 # lin4neuro-bionic
 
-# This repository will be archived on 30 Jun 2020. This has been transfered to GitLab.
+# This repository will be archived on 30 Jun 2020. This repository has been transfered to GitLab.
 https://gitlab.com/kytk/lin4neuro-bionic
 
 ----
