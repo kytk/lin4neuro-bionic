@@ -1,4 +1,10 @@
 # lin4neuro-bionic
+
+# This repository will be archived on 30 Jun 2020. This has been transfered to GitLab.
+https://gitlab.com/kytk/lin4neuro-bionic
+
+----
+
 Building script of Lin4Neuro based on Ubuntu-mini 18.04 (bionic)
 
 This repository includes scripts to make Lin4Neuro from Ubuntu-mini.iso.
